@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AsesorController;
 use App\Http\Controllers\EditPasswordController;
+use App\Http\Controllers\LEDController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PemimpinController;
 use App\Http\Controllers\ProfileController;
@@ -59,6 +60,10 @@ Route::get('/daftar-pengajuan-asesor/detail-penilaian/{id_pengajuan}', [AsesorCo
 Route::get('/daftar-pengajuan-asesor/detail-pengajuan/{id_pengajuan}', [AsesorController::class, 'detailPengajuan'])->middleware('auth');
 Route::get('/daftar-pengajuan-asesor/detail-pengajuan/download/{id}', [AsesorController::class, 'download'])->middleware('auth');
 Route::post('/daftar-pengajuan-asesor/form-penilaian', [AsesorController::class, 'nilaiMasuk']);
+//Laporan Evaluasi Diri
+Route::get('/laporan-evaluasi-diri', [LEDController::class, 'index']);
+Route::post('/laporan-evaluasi-diri/save', [LEDController::class, 'save']);
+
 
 
 //pemimpin
