@@ -8,6 +8,9 @@ use App\Models\pengajuan;
 use App\Models\penilaian;
 use Faker\Core\File;
 use Illuminate\Http\Request;
+use Google\Client;
+use Google\Service\Drive;
+
 
 class WakilProdiController extends Controller
 {
@@ -82,9 +85,54 @@ class WakilProdiController extends Controller
         }
     }
 
+    //redirect ke url login google
+
+    public function gdrive()
+    {
+        $data = auth()->user()->type;
+        if ($data == "Wakil Prodi") {
+            $client = new \Google\Client();
+            $client->setClientId('879468625806-miipfn3ppekunoqhltcufl3610cnj08e.apps.googleusercontent.com');
+            $client->setClientSecret('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');
+            $client->setRedirectUri('http://127.0.0.1:8000/google-drive/callback');
+            $client->setScopes([
+                'https://www.googleapis.com/auth/drive.file',
+                'https://www.googleapis.com/auth/drive.resource',
+                'https://www.googleapis.com/auth/drive',
+            ]);
+            $url = $client->createAuthUrl();
+            return redirect($url);
+        } else {
+            return redirect()->intended('/home');
+        }
+    }
+
+    //get access token untuk user
+
+    public function getAccessToken()
+    {
+        $client = new \Google\Client();
+        $client->setClientId('879468625806-miipfn3ppekunoqhltcufl3610cnj08e.apps.googleusercontent.com');
+        $client->setClientSecret('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');
+        $client->setRedirectUri('http://127.0.0.1:8000/google-drive/callback');
+        $code = request('code');
+        $access_token = $client->fetchAccessTokenWithAuthCode($code);
+        $token =  $access_token['access_token'];
+        User::where('id', auth()->user()->id)
+            ->update(['access_token' => $token]);
+        return redirect()->intended('/pengajuan/tambah-pengajuan');
+    }
+
+
+
+
+
     public function ajukan(Request $request)
     {
-
+        $client = new \Google\Client();
+        $access_token = auth()->user()->access_token;
+        $client->setAccessToken($access_token);
+        $service = new \Google\Service\Drive($client);
 
 
 
@@ -104,6 +152,7 @@ class WakilProdiController extends Controller
             'nama_narahubung' => 'required|min:3|max:255',
             'telepon_seluler' => 'required|min:3|max:255',
             'id_acesor' => 'required',
+            'file_ded' => 'required|mimetypes:application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
         ]);
 
 
@@ -116,20 +165,30 @@ class WakilProdiController extends Controller
 
         $id_pengaju = $uploade->id;
         $file_ded = $request['file_ded'];
-        foreach ($file_ded as $file) {
+        //upload google drive
+        $namefile = new \Google\Service\Drive\DriveFile(array('name' => $file_ded->getClientOriginalName()));
+        $result = $service->files->create($namefile, array(
+
+            'data' => file_get_contents(public_path('storage/' . $file_ded->store('ded'))), // ADD YOUR FILE PATH WHICH YOU WANT TO UPLOAD ON GOOGLE DRIVE
+            'mimeType' => 'application/octet-stream',
+            'uploadType' => 'media'
+        ));
+        $url = $result->id;
 
 
-            filePengajuan::create([
-                'id_pengajuan' => $id_pengaju,
-                'nama_file' => $file->store('ded'),
-                'size' => $file->getSize(),
-                'nama_asli_file' => $file->getClientOriginalName(),
-                'lokasi' => $file->store('ded'),
-                'tipe' => "ded",
-            ]);
-        }
+
+        filePengajuan::create([
+            'id_pengajuan' => $id_pengaju,
+            'nama_file' => $url,
+            'size' => $file_ded->getSize(),
+            'nama_asli_file' => $file_ded->getClientOriginalName(),
+            'lokasi' => $file_ded->store('ded'),
+            'tipe' => "ded",
+        ]);
+
 
         $file_dkps = $request['file_dkps'];
+
         foreach ($file_dkps as $file) {
 
 
@@ -157,5 +216,12 @@ class WakilProdiController extends Controller
             ]);
         }
         return redirect()->intended('/pengajuan');
+    }
+    public function coba(Request $request)
+    {
+        return view('wakil.drive');
+    }
+    public function uploadDrive(Request $request)
+    {
     }
 }

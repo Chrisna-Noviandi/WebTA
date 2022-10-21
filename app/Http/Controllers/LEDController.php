@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\PDF;
+
 
 class LEDController extends Controller
 {
@@ -17,6 +19,10 @@ class LEDController extends Controller
     }
     public function save(Request $request)
     {
-        dd($request);
+
+        $data = $request;
+        view()->share('data', $data);
+        $pdf = PDF::loadView('wakil.pdf');
+        return $pdf->download('pdf_file.pdf');
     }
 }

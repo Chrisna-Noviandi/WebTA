@@ -18,7 +18,7 @@
 @endsection
 
 @section('content')
-<a href="/pengajuan/tambah-pengajuan">
+<a href="/authgdrive">
   <div class="d-grid gap-2">
     <button type="button" class="btn btn-outline-dark mt-5">Tambah Pengajuan Akredetasi</button>
   </div>

@@ -9,7 +9,10 @@ use App\Http\Controllers\PemimpinController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\WakilProdiController;
+use Google\Service\AdExchangeBuyerII\Client;
+use Google\Service\Docs\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\ServiceProvider;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,6 +52,7 @@ Route::get('/pengajuan/detail/download/{id}', [WakilProdiController::class, 'dow
 Route::get('/pengajuan/tambah-pengajuan', [WakilProdiController::class, 'tambah'])->middleware('auth');
 Route::get('/pengajuan/lihat-nilai/{id}', [WakilProdiController::class, 'detailNilai'])->middleware('auth');
 Route::post('/register-pengajuan', [WakilProdiController::class, 'ajukan']);
+
 
 
 
@@ -101,3 +105,54 @@ Route::get('/profile3/editpassword', [EditPasswordController::class, 'show3'])->
 
 
 Route::post('/editpassword/update', [EditPasswordController::class, 'edit'])->middleware('auth');
+
+//autentikasi google
+Route::get('/authgdrive', [WakilProdiController::class, 'gdrive'])->middleware('auth');
+Route::get('/google-drive/callback', [WakilProdiController::class, 'getAccessToken'])->middleware('auth');
+
+// Route::get('/authgdrive', function () {
+//     $client = new \Google\Client();
+//     $client->setClientId('879468625806-miipfn3ppekunoqhltcufl3610cnj08e.apps.googleusercontent.com');
+//     $client->setClientSecret('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');
+//     $client->setRedirectUri('http://127.0.0.1:8000/google-drive/callback');
+//     $client->setScopes([
+//         'https://www.googleapis.com/auth/drive.file',
+//         'https://www.googleapis.com/auth/drive.resource',
+//         'https://www.googleapis.com/auth/drive',
+//     ]);
+//     $url = $client->createAuthUrl();
+//     return redirect($url);
+// });
+// Route::get('/google-drive/callback', function () {
+//     $client = new \Google\Client();
+//     $client->setClientId('879468625806-miipfn3ppekunoqhltcufl3610cnj08e.apps.googleusercontent.com');
+//     $client->setClientSecret('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');
+//     $client->setRedirectUri('http://127.0.0.1:8000/google-drive/callback');
+//     $code = request('code');
+//     $access_token = $client->fetchAccessTokenWithAuthCode($code);
+//     return $access_token['access_token'];
+// });
+
+
+// Route::get('/google-drive/upload', function () {
+//     $client = new \Google\Client();
+//     $access_token = 'ya29.a0Aa4xrXNUv_SOU8AihcW5HaYp0bimSDvn9KKKjeLnGeusF3yY1ye_o2rLs9sV0R7cz9glZOH8Y_Acgg5mOOxxuHjQzC0Zfx98Qk4b5z0Ow4X3ps6RtAgQlAaXqVPh3LdB9pjWwHEBQxuzU9amfYUiE8lfQzI_aCgYKATASARMSFQEjDvL95RzkaweExGN6rjlqVMloHA0163';
+//     $client->setAccessToken($access_token);
+//     $service = new \Google\Service\Drive($client);
+//     $file = new \Google\Service\Drive\DriveFile(array('name' => 'FORM-MHS-TA-rev300921.xlsx'));
+
+//     $result = $service->files->create($file, array(
+
+//         'data' => file_get_contents(public_path('storage\ded\FORM-MHS-TA-rev300921.xlsx')), // ADD YOUR FILE PATH WHICH YOU WANT TO UPLOAD ON GOOGLE DRIVE
+//         'mimeType' => 'application/octet-stream',
+//         'uploadType' => 'media'
+//     ));
+//     $url = $result->id;
+
+//     return view('wakil.drive', ["id" => $url]);
+// });
+
+Route::get('/embed', function () {
+
+    return view('wakil.drive');
+});

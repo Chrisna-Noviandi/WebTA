@@ -143,7 +143,7 @@
     </div>
     <div class="col-12 mb-3">
         <label for="formFileMultiple" class="form-label">File DED</label>
-        <input class="form-control @error('file_ded') is-invalid @enderror" type="file" id="formFileMultiple" name="file_ded[]" required multiple>
+        <input class="form-control @error('file_ded') is-invalid @enderror" type="file" id="formFileMultiple" name="file_ded" required>
         @error("file_ded")
           <div class="invalid-feedback">
             {{ $message }}

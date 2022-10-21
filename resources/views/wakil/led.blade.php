@@ -309,7 +309,7 @@
 
   <script src={{ asset('ckeditor/build/ckeditor.js') }}></script>
 
- @for($i = 1 ; $i <= 23 ; $i++)
+@for($i = 1 ; $i <= 23 ; $i++)
   <script>
     ClassicEditor
         .create( document.querySelector( '#ckeditor{{ $i }}' ) )
@@ -318,59 +318,6 @@
         } );
   </script>
 @endfor
-  {{-- <script>
-    ClassicEditor
-        .create( document.querySelector( '#ckeditor' ) )
-        .catch( error => {
-            console.error( error );
-        } );
-    ClassicEditor
-    .create( document.querySelector( '#ckeditor2' ) )
-    .catch( error => {
-        console.error( error );
-    } );
-    ClassicEditor
-    .create( document.querySelector( '#ckeditor3' ) )
-    .catch( error => {
-        console.error( error );
-    } );
-    ClassicEditor
-    .create( document.querySelector( '#ckeditor4' ) )
-    .catch( error => {
-        console.error( error );
-    } );
-    ClassicEditor
-    .create( document.querySelector( '#ckeditor5' ) )
-    .catch( error => {
-        console.error( error );
-    } );
-    ClassicEditor
-    .create( document.querySelector( '#ckeditor6' ) )
-    .catch( error => {
-        console.error( error );
-    } );
-    ClassicEditor
-    .create( document.querySelector( '#ckeditor7' ) )
-    .catch( error => {
-        console.error( error );
-    } );
-    ClassicEditor
-    .create( document.querySelector( '#ckeditor8' ) )
-    .catch( error => {
-        console.error( error );
-    } );
-    ClassicEditor
-    .create( document.querySelector( '#ckeditor9' ) )
-    .catch( error => {
-        console.error( error );
-    } );
-    ClassicEditor
-    .create( document.querySelector( '#ckeditor10' ) )
-    .catch( error => {
-        console.error( error );
-    } );
-  
-  </script> --}}
 
 
 @endsection

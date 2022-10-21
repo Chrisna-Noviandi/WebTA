@@ -17,7 +17,7 @@
 @endsection
 
 @section('content')
-
+<iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQmWglj42yHNmSEugbjBvsu8KEdljjf3q6Fj3IXrR1DRU56GF2L1bDhmBHAUcSxOA/pubhtml?widget=true&amp;headers=false"></iframe>
 <div class="container mt-5 position-relative">
   <div class="card position-absolute start-50 translate-middle-x" style="width: 80%;">
     <img src="/image/KAMPUS.jpg" class="card-img-top" alt="...">
