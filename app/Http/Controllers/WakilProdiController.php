@@ -152,7 +152,8 @@ class WakilProdiController extends Controller
             'nama_narahubung' => 'required|min:3|max:255',
             'telepon_seluler' => 'required|min:3|max:255',
             'id_acesor' => 'required',
-            'file_ded' => 'required|mimetypes:application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+            'file_ded' => 'required|mimetypes:application/pdf',
+            'file_dkps' => 'required|mimetypes:application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
         ]);
 
 
@@ -165,21 +166,13 @@ class WakilProdiController extends Controller
 
         $id_pengaju = $uploade->id;
         $file_ded = $request['file_ded'];
-        //upload google drive
-        $namefile = new \Google\Service\Drive\DriveFile(array('name' => $file_ded->getClientOriginalName()));
-        $result = $service->files->create($namefile, array(
 
-            'data' => file_get_contents(public_path('storage/' . $file_ded->store('ded'))), // ADD YOUR FILE PATH WHICH YOU WANT TO UPLOAD ON GOOGLE DRIVE
-            'mimeType' => 'application/octet-stream',
-            'uploadType' => 'media'
-        ));
-        $url = $result->id;
 
 
 
         filePengajuan::create([
             'id_pengajuan' => $id_pengaju,
-            'nama_file' => $url,
+            'nama_file' => $file_ded->store('ded'),
             'size' => $file_ded->getSize(),
             'nama_asli_file' => $file_ded->getClientOriginalName(),
             'lokasi' => $file_ded->store('ded'),
@@ -187,20 +180,29 @@ class WakilProdiController extends Controller
         ]);
 
 
+
         $file_dkps = $request['file_dkps'];
 
-        foreach ($file_dkps as $file) {
+        //upload google drive
+        $namefile = new \Google\Service\Drive\DriveFile(array('name' => $file_dkps->getClientOriginalName()));
+        $result = $service->files->create($namefile, array(
+
+            'data' => file_get_contents(public_path('storage/' . $file_dkps->store('dkps'))), // ADD YOUR FILE PATH WHICH YOU WANT TO UPLOAD ON GOOGLE DRIVE
+            'mimeType' => 'application/octet-stream',
+            'uploadType' => 'media'
+        ));
+        $url = $result->id;
 
 
-            filePengajuan::create([
-                'id_pengajuan' => $id_pengaju,
-                'nama_file' => $file->store('dkps'),
-                'size' => $file->getSize(),
-                'nama_asli_file' => $file->getClientOriginalName(),
-                'lokasi' => $file->store('dkps'),
-                'tipe' => "dkps",
-            ]);
-        }
+        filePengajuan::create([
+            'id_pengajuan' => $id_pengaju,
+            'nama_file' => $url,
+            'size' => $file_ded->getSize(),
+            'nama_asli_file' => $file_ded->getClientOriginalName(),
+            'lokasi' => $file_ded->store('dkps'),
+            'tipe' => "dkps",
+        ]);
+
 
         $lampiran = $request['lampiran'];
         foreach ($lampiran as $file) {
@@ -215,13 +217,12 @@ class WakilProdiController extends Controller
                 'tipe' => "lampiran",
             ]);
         }
+
+        penilaian::create(['id_pengajuan' => $uploade->id]);
         return redirect()->intended('/pengajuan');
     }
     public function coba(Request $request)
     {
         return view('wakil.drive');
-    }
-    public function uploadDrive(Request $request)
-    {
     }
 }

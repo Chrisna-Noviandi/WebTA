@@ -15,6 +15,7 @@
 
 @section('content')
 
+
 <div class="container mt-5 position-relative">
   <div class="card position-absolute start-50 translate-middle-x" style="width: 80%;">
     <img src="/image/KAMPUS.jpg" class="card-img-top" alt="...">

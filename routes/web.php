@@ -156,3 +156,18 @@ Route::get('/embed', function () {
 
     return view('wakil.drive');
 });
+
+
+Route::get('/multi', [AsesorController::class, 'multi']);
+Route::post('/multi/p', [AsesorController::class, 'multip']);
+Route::post('/multi/autosave1', [AsesorController::class, 'autosave1']);
+Route::post('/multi/autosave2', [AsesorController::class, 'autosave2']);
+Route::post('/multi/autosave3', [AsesorController::class, 'autosave3']);
+Route::post('/multi/autosave4', [AsesorController::class, 'autosave4']);
+Route::post('/multi/autosave5', [AsesorController::class, 'autosave5']);
+Route::post('/multi/autosave6', [AsesorController::class, 'autosave6']);
+Route::post('/multi/autosave7', [AsesorController::class, 'autosave7']);
+Route::post('/multi/autosave8', [AsesorController::class, 'autosave8']);
+Route::post('/multi/autosave9', [AsesorController::class, 'autosave9']);
+Route::post('/multi/autosave10', [AsesorController::class, 'autosave10']);
+Route::post('/multi/autosave11', [AsesorController::class, 'autosave11']);

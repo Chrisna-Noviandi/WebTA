@@ -224,10 +224,221 @@ class AsesorController extends Controller
         ]);
 
 
-
         pengajuan::where('id', $request['id_pengajuan'])
             ->update(['status' => 'sudah']);
         penilaian::create($validatedData);
         return redirect()->intended('/daftar-pengajuan-asesor');
+    }
+    public function multi(Request $request)
+    {
+        return view('asesor.multiform', ["penilaian" => penilaian::find(1)]);
+    }
+
+    public function multip(Request $request)
+    {
+        dd($request);
+
+        // $koontol = Asesor::create($data);
+
+        // $data_redirect['id_row'] = $koontol->id;
+
+        // return view('multiform', $data_redirect);
+    }
+
+    public function autosave1(Request $request)
+    {
+        json_encode(penilaian::where('id', 1)
+            ->update([
+                'f1' => $request['f1'],
+                'n1' => $request['n1']
+            ]));
+    }
+    public function autosave2(Request $request)
+    {
+        json_encode(penilaian::where('id', 1)
+            ->update([
+                'f2' => $request['f2'],
+                'n2' => $request['n2']
+            ]));
+    }
+    public function autosave3(Request $request)
+    {
+        json_encode(penilaian::where('id', 1)
+            ->update([
+                'f3' => $request['f3'],
+                'n3' => $request['n3'],
+                'f4' => $request['f4'],
+                'n4' => $request['n4'],
+                'f5' => $request['f5'],
+                'n5' => $request['n5']
+            ]));
+    }
+    public function autosave4(Request $request)
+    {
+        json_encode(penilaian::where('id', 1)
+            ->update([
+                'f6' => $request['f6'],
+                'n6' => $request['n6'],
+                'f7' => $request['f7'],
+                'n7' => $request['n7'],
+                'f8' => $request['f8'],
+                'n8' => $request['n8'],
+                'f9' => $request['f9'],
+                'n9' => $request['n9'],
+                'f10' => $request['f10'],
+                'n10' => $request['n10'],
+                'f11' => $request['f11'],
+                'n11' => $request['n11'],
+                'f12' => $request['f12'],
+                'n12' => $request['n12'],
+                'f13' => $request['f13'],
+                'n13' => $request['n13']
+            ]));
+    }
+    public function autosave5(Request $request)
+    {
+        json_encode(penilaian::where('id', 1)
+            ->update([
+                'f14' => $request['f14'],
+                'n14' => $request['n14'],
+                'f15' => $request['f15'],
+                'n15' => $request['n15'],
+                'f16' => $request['f16'],
+                'n16' => $request['n16']
+            ]));
+    }
+    public function autosave6(Request $request)
+    {
+        json_encode(penilaian::where('id', 1)
+            ->update([
+                'f17' => $request['f17'],
+                'n17' => $request['n17'],
+                'f18' => $request['f18'],
+                'n18' => $request['n18'],
+                'f19' => $request['f19'],
+                'n19' => $request['n19'],
+                'f20' => $request['f20'],
+                'n20' => $request['n20'],
+                'f21' => $request['f21'],
+                'n21' => $request['n21'],
+                'f22' => $request['f22'],
+                'n22' => $request['n22'],
+                'f23' => $request['f23'],
+                'n23' => $request['n23'],
+                'f24' => $request['f24'],
+                'n24' => $request['n24'],
+                'f25' => $request['f25'],
+                'n25' => $request['n25'],
+                'f26' => $request['f26'],
+                'n26' => $request['n26'],
+                'f27' => $request['f27'],
+                'n27' => $request['n27'],
+                'f28' => $request['f28'],
+                'n28' => $request['n28'],
+                'f29' => $request['f29'],
+                'n29' => $request['n29'],
+                'f30' => $request['f30'],
+                'n30' => $request['n30'],
+                'f31' => $request['f31'],
+                'n31' => $request['n31']
+            ]));
+    }
+    public function autosave7(Request $request)
+    {
+        json_encode(penilaian::where('id', 1)
+            ->update([
+                'f32' => $request['f32'],
+                'n32' => $request['n32'],
+                'f33' => $request['f33'],
+                'n33' => $request['n33'],
+                'f34' => $request['f34'],
+                'n34' => $request['n34'],
+                'f35' => $request['f35'],
+                'n35' => $request['n35'],
+                'f36' => $request['f36'],
+                'n36' => $request['n36'],
+                'f37' => $request['f37'],
+                'n37' => $request['n37']
+            ]));
+    }
+    public function autosave8(Request $request)
+    {
+        json_encode(penilaian::where('id', 1)
+            ->update([
+                'f38' => $request['f38'],
+                'n38' => $request['n38'],
+                'f39' => $request['f39'],
+                'n39' => $request['n39'],
+                'f40' => $request['f40'],
+                'n40' => $request['n40'],
+                'f41' => $request['f41'],
+                'n41' => $request['n41'],
+                'f42' => $request['f42'],
+                'n42' => $request['n42'],
+                'f43' => $request['f43'],
+                'n43' => $request['n43'],
+                'f44' => $request['f44'],
+                'n44' => $request['n44'],
+                'f45' => $request['f45'],
+                'n45' => $request['n45'],
+                'f46' => $request['f46'],
+                'n46' => $request['n46'],
+                'f47' => $request['f47'],
+                'n47' => $request['n47']
+            ]));
+    }
+    public function autosave9(Request $request)
+    {
+        json_encode(penilaian::where('id', 1)
+            ->update([
+                'f48' => $request['f48'],
+                'n48' => $request['n48'],
+                'f49' => $request['f49'],
+                'n49' => $request['n49']
+            ]));
+    }
+    public function autosave10(Request $request)
+    {
+        json_encode(penilaian::where('id', 1)
+            ->update([
+                'f50' => $request['f50'],
+                'n50' => $request['n50'],
+                'f51' => $request['f51'],
+                'n51' => $request['n51']
+            ]));
+    }
+    public function autosave11(Request $request)
+    {
+        json_encode(penilaian::where('id', 1)
+            ->update([
+                'f52' => $request['f52'],
+                'n52' => $request['n52'],
+                'f53' => $request['f53'],
+                'n53' => $request['n53'],
+                'f54' => $request['f54'],
+                'n54' => $request['n54'],
+                'f55' => $request['f55'],
+                'n55' => $request['n55'],
+                'f56' => $request['f56'],
+                'n56' => $request['n56'],
+                'f57' => $request['f57'],
+                'n57' => $request['n57'],
+                'f58' => $request['f58'],
+                'n58' => $request['n58'],
+                'f59' => $request['f59'],
+                'n59' => $request['n59'],
+                'f60' => $request['f60'],
+                'n60' => $request['n60'],
+                'f61' => $request['f61'],
+                'n61' => $request['n61'],
+                'f62' => $request['f62'],
+                'n62' => $request['n62'],
+                'f63' => $request['f63'],
+                'n63' => $request['n63'],
+                'f64' => $request['f64'],
+                'n64' => $request['n64'],
+                'f65' => $request['f65'],
+                'n65' => $request['n65']
+            ]));
     }
 }
