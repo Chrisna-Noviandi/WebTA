@@ -34,7 +34,11 @@ class AsesorController extends Controller
     {
         $data = auth()->user()->type;
         if ($data == "Acesor") {
-            return view('asesor.form-penilaian', ["id_pengajuan" => $id_pengajuan]);
+            return view('asesor.multiform', [
+                "penilaian" => penilaian::where('id_pengajuan', $id_pengajuan)->get(),
+                "file_ded" => filePengajuan::where('id_pengajuan', $id_pengajuan)->where('tipe', 'ded')->get(),
+                "file_dkps" => filePengajuan::where('id_pengajuan', $id_pengajuan)->where('tipe', 'dkps')->get()
+            ]);
         } else {
             return redirect()->intended('/home');
         }
@@ -247,15 +251,24 @@ class AsesorController extends Controller
 
     public function autosave1(Request $request)
     {
-        json_encode(penilaian::where('id', 1)
-            ->update([
-                'f1' => $request['f1'],
-                'n1' => $request['n1']
-            ]));
+        json_encode(
+            penilaian::where('id', $request['id'])
+                ->update([
+                    'f1' => $request['f1'],
+                    'n1' => $request['n1']
+                ])
+        );
+
+        json_encode(
+            pengajuan::where('id', $request['id'])
+                ->update([
+                    'status' => "hampir"
+                ])
+        );
     }
     public function autosave2(Request $request)
     {
-        json_encode(penilaian::where('id', 1)
+        json_encode(penilaian::where('id', $request['id'])
             ->update([
                 'f2' => $request['f2'],
                 'n2' => $request['n2']
@@ -263,7 +276,7 @@ class AsesorController extends Controller
     }
     public function autosave3(Request $request)
     {
-        json_encode(penilaian::where('id', 1)
+        json_encode(penilaian::where('id', $request['id'])
             ->update([
                 'f3' => $request['f3'],
                 'n3' => $request['n3'],
@@ -275,7 +288,7 @@ class AsesorController extends Controller
     }
     public function autosave4(Request $request)
     {
-        json_encode(penilaian::where('id', 1)
+        json_encode(penilaian::where('id', $request['id'])
             ->update([
                 'f6' => $request['f6'],
                 'n6' => $request['n6'],
@@ -297,7 +310,7 @@ class AsesorController extends Controller
     }
     public function autosave5(Request $request)
     {
-        json_encode(penilaian::where('id', 1)
+        json_encode(penilaian::where('id', $request['id'])
             ->update([
                 'f14' => $request['f14'],
                 'n14' => $request['n14'],
@@ -309,7 +322,7 @@ class AsesorController extends Controller
     }
     public function autosave6(Request $request)
     {
-        json_encode(penilaian::where('id', 1)
+        json_encode(penilaian::where('id', $request['id'])
             ->update([
                 'f17' => $request['f17'],
                 'n17' => $request['n17'],
@@ -345,7 +358,7 @@ class AsesorController extends Controller
     }
     public function autosave7(Request $request)
     {
-        json_encode(penilaian::where('id', 1)
+        json_encode(penilaian::where('id', $request['id'])
             ->update([
                 'f32' => $request['f32'],
                 'n32' => $request['n32'],
@@ -363,7 +376,7 @@ class AsesorController extends Controller
     }
     public function autosave8(Request $request)
     {
-        json_encode(penilaian::where('id', 1)
+        json_encode(penilaian::where('id', $request['id'])
             ->update([
                 'f38' => $request['f38'],
                 'n38' => $request['n38'],
@@ -389,7 +402,7 @@ class AsesorController extends Controller
     }
     public function autosave9(Request $request)
     {
-        json_encode(penilaian::where('id', 1)
+        json_encode(penilaian::where('id', $request['id'])
             ->update([
                 'f48' => $request['f48'],
                 'n48' => $request['n48'],
@@ -399,7 +412,7 @@ class AsesorController extends Controller
     }
     public function autosave10(Request $request)
     {
-        json_encode(penilaian::where('id', 1)
+        json_encode(penilaian::where('id', $request['id'])
             ->update([
                 'f50' => $request['f50'],
                 'n50' => $request['n50'],
@@ -409,7 +422,7 @@ class AsesorController extends Controller
     }
     public function autosave11(Request $request)
     {
-        json_encode(penilaian::where('id', 1)
+        json_encode(penilaian::where('id', $request['id'])
             ->update([
                 'f52' => $request['f52'],
                 'n52' => $request['n52'],
@@ -440,5 +453,115 @@ class AsesorController extends Controller
                 'f65' => $request['f65'],
                 'n65' => $request['n65']
             ]));
+    }
+    public function autosave12(Request $request)
+    {
+        json_encode(penilaian::where('id', $request['id'])
+            ->update([
+                'f66' => $request['f66'],
+                'n66' => $request['n66'],
+                'f67' => $request['f67'],
+                'n67' => $request['n67'],
+                'f68' => $request['f68'],
+                'n68' => $request['n68'],
+                'f69' => $request['f69'],
+                'n69' => $request['n69']
+            ]));
+    }
+
+
+
+    public function hitung($id)
+    {
+        $n = penilaian::find($id);
+
+
+        $a1 = $n["n1"] * 1.0;
+        $b1 = $n["n2"] * 1.0;
+        $c1 = $n["n3"] * 0.51 + $n["n4"] * 1.05 + $n["n5"] * 1.53;
+        $c2 = $n["n6"] * 0.34 + $n["n7"] * 0.34 + $n["n8"] * 0.68 + $n["n9"] * 0.34 + $n["n`10`"] * 0.68 + $n["n11"] * 1.01 + $n["n12"] * 1.36 + $n["n13"] * 1.36;
+        $c3 = $n["n14"] * 4.60 + $n["n15"] * 3.07 + $n["n16"] * 1.53;
+        $c4 = $n["n17"] * 0.74 + $n["n18"] * 0.99 + $n["n19"] * 0.50 + $n["n20"] * 0.50 + $n["n21"] * 0.99 + $n["n22"] * 0.25 + $n["n23"] * 0.50 + $n["n24"] * 0.81 + $n["n25"] * 0.81 + $n["n26"] * 0.41 + $n["n27"] * 0.81 + $n["n28"] * 0.81 + $n["n29"] * 0.81 + $n["n30"] * 2.23 + $n["n31"] * 1.12;
+        $c5 = $n["n32"] * 0.77 + $n["n33"] * 0.77 + $n["n34"] * 0.38 + $n["n35"] * 0.38 + $n["n36"] * 0.77 + $n["n37"] * 3.07;
+        $c6 = $n["n38"] * 2.51 + $n["n39"] * 0.84 + $n["n40"] * 1.67 + $n["n41"] * 1.12 + $n["n42"] * 0.56 + $n["n43"] * 2.51 + $n["n44"] * 1.67 + $n["n45"] * 1.67 + $n["n46"] * 2.51 + $n["n47"] * 3.35;
+        $c7 = $n["n48"] * 1.53 + $n["n49"] * 3.07;
+        $c8 = $n["n50"] * 0.51 + $n["n51"] * 1.02;
+        $c9 = $n["n52"] * 1.92 + $n["n53"] * 1.92 + $n["n54"] * 2.88 + $n["n55"] * 0.96 + $n["n56"] * 1.92 + $n["n57"] * 1.92 + $n["n58"] * 1.92 + $n["n59"] * 2.88 + $n["n60"] * 2.88 + $n["n61"] * 1.92 + $n["n62"] * 1.92 + $n["n63"] * 3.83 + $n["n64"] * 2.88 + $n["n65"] * 0.96;
+        $d1 = $n["n66"] * 1.50 + $n["n67"] * 2.00 + $n["n68"] * 1.50 + $n["n69"] * 1.00;
+
+        $jumlah = $a1 + $b1 + $c1 + $c2 + $c3 + $c4 + $c5 + $c6 + $c7 + $c8 + $c9 + $d1;
+
+
+
+        if ($n["n12"] >= 2 && $n["n17"] >= 2 && $n["n38"] >= 2) {
+            if ($n["n18"] >= 3.5 && $n["n19"] >= 3.5 && $n["n60"] >= 3.5 && $n["n61"] >= 3.5) {
+                if ($jumlah >= 361) {
+                    penilaian::where('id', $n['id'])
+                        ->update([
+                            'nilai' => "Unggul"
+                        ]);
+                } elseif ($jumlah >= 301 && $jumlah < 361) {
+                    penilaian::where('id', $n['id'])
+                        ->update([
+                            'nilai' => "Baik Sekali"
+                        ]);
+                } elseif ($jumlah >= 200 && $jumlah < 301) {
+                    penilaian::where('id', $n['id'])
+                        ->update([
+                            'nilai' => "Baik"
+                        ]);
+                } else {
+                    penilaian::where('id', $n['id'])
+                        ->update([
+                            'nilai' => "Tidak Terakredetasi"
+                        ]);
+                }
+            } elseif ($n["n18"] >= 3 && $n["n19"] >= 3 && $n["n60"] >= 3 && $n["n61"] >= 3) {
+                if ($jumlah >= 361) {
+                    penilaian::where('id', $n['id'])
+                        ->update([
+                            'nilai' => "Baik Sekali"
+                        ]);
+                } elseif ($jumlah >= 301 && $jumlah < 361) {
+                    penilaian::where('id', $n['id'])
+                        ->update([
+                            'nilai' => "Baik Sekali"
+                        ]);
+                } elseif ($jumlah >= 200 && $jumlah < 301) {
+                    penilaian::where('id', $n['id'])
+                        ->update([
+                            'nilai' => "Baik"
+                        ]);
+                } else {
+                    penilaian::where('id', $n['id'])
+                        ->update([
+                            'nilai' => "Tidak Terakredetasi"
+                        ]);
+                }
+            } else {
+                if ($jumlah >= 200) {
+                    penilaian::where('id', $n['id'])
+                        ->update([
+                            'nilai' => "Baik"
+                        ]);
+                } else {
+                    penilaian::where('id', $n['id'])
+                        ->update([
+                            'nilai' => "Tidak Terakredetasi"
+                        ]);
+                }
+            }
+        } else {
+            penilaian::where('id', $n['id'])
+                ->update([
+                    'nilai' => "Tidak Terakredetasi"
+                ]);
+        }
+        pengajuan::where('id', $n['id'])
+            ->update([
+                'status' => "sudah"
+            ]);
+
+        return redirect()->intended('/daftar-pengajuan-asesor');
     }
 }

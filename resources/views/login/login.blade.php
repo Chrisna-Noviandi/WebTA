@@ -77,13 +77,30 @@
                 white-space: nowrap;
                 -webkit-overflow-scrolling: touch;
             }
+            body, html {
+            height: 100%;
+            }
+
+            .bg {
+            /* The image used */
+            background-image: url("image/logo2.jpg");
+
+            /* Full height */
+            height: 100%;
+
+            /* Center and scale the image nicely */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            }
+
             </style>
 
             
             <!-- Custom styles for this template -->
             <link href="signin.css" rel="stylesheet">
         </head>
-        <body class="text-center">
+        <body class="text-center bg">
 
         @if(session()->has('loginError'))
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -92,10 +109,13 @@
             </div>
         @endif
             
-        <main class="form-signin w-100 m-auto">
+        <main class="form-signin w-100 m-auto mt-5" style="position: relative; top: -100px;">
+
             <form action="/login" method="post">
                 @csrf
-                <img class="mb-5" src="/image/uwika.jpg" alt="" width="150" height="110">
+
+                <img class="mb-1" src="/image/logo.png" alt="" width="370" height="215">
+
                 <h1 class="h3 mb-3 fw-normal"><Label>Login</Label></h1>
 
                 <div class="form-floating">

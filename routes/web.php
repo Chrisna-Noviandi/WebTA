@@ -171,3 +171,6 @@ Route::post('/multi/autosave8', [AsesorController::class, 'autosave8']);
 Route::post('/multi/autosave9', [AsesorController::class, 'autosave9']);
 Route::post('/multi/autosave10', [AsesorController::class, 'autosave10']);
 Route::post('/multi/autosave11', [AsesorController::class, 'autosave11']);
+Route::post('/multi/autosave12', [AsesorController::class, 'autosave12']);
+
+Route::get('/cobaaa/{id}', [AsesorController::class, 'hitung']);

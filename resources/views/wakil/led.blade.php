@@ -9,10 +9,10 @@
     <a class="nav-link" aria-current="page" href="/home-asesor"><i class="bi bi-house-fill"></i> Home</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="/daftar-pengajuan-asesor"><i class="bi bi-people"></i>Daftar Pengajuan</a>
+    <a class="nav-link" href="/pengajuan"><i class="bi bi-people"></i>Daftar Pengajuan</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link " href="/laporan-evaluasi-diri"><i class="bi bi-people"></i>LED</a>
+    <a class="nav-link active " href="/laporan-evaluasi-diri"><i class="bi bi-people"></i>LED</a>
   </li>
 @endsection
 

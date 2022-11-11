@@ -3,14 +3,52 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Bootstrap Multi Step Form</title>
+  <title>Form Penilaian</title>
   <link href="https://fonts.googleapis.com/css?family=Poppins:400,600&display=swap" rel="stylesheet">
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="/css/style.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 </head>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Web Simulasi Akredetasi Standart BAN-PT</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="/home-asesor"><i class="bi bi-house-fill"></i> Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="/daftar-pengajuan-asesor"><i class="bi bi-people"></i>Daftar Pengajuan</a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav ms-auto">
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="bi bi-forward-fill"></i> Welcome, Asesor
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li>
+                  <a href="/profile1">
+                    <button type="submit" class="dropdown-item"><i class="bi bi-person-square"></i> Profile</button>
+                  </a>
+              </li>
+              <li><form action="/logout" method="post">
+                  @csrf
+                  <button type="submit" class="dropdown-item"><i class="bi bi-box-arrow-in-right"></i> Logout</button>
+              </form></li>
+              </ul> 
+          </li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
 <body>
 <div>
@@ -4383,7 +4421,7 @@
       </div>
     </div>
   </div>
-  {{-- modal C64--}}
+  {{-- modal C65--}}
   <div class="modal fade" id="modalc65" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -4425,6 +4463,534 @@
       </div>
     </div>
   </div>
+  {{-- modal C66--}}
+  <div class="modal fade" id="modalc66" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="modalc66">
+            Keserbacakupan 
+            (kelengkapan, keluasan, 
+            dan kedalaman), 
+            ketepatan, ketajaman, 
+            dan kesesuaian analisis 
+            capaian kinerja serta 
+            konsistensi dengan 
+            setiap kriteria.            
+          </h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <ol style="list-style-type: none;">
+              <b><li>Nilai 4</li></b>
+              UPPS telah melakukan 
+              analisis capaian kinerja 
+              yang:
+              <ol>
+                <li>
+                  analisisnya didukung 
+                  oleh data/informasi yang 
+                  relevan (merujuk pada 
+                  pencapaian standar mutu 
+                  perguruan tinggi) dan 
+                  berkualitas (andal dan 
+                  memadai) yang didukung 
+                  oleh keberadaan 
+                  pangkalan data institusi 
+                  yang terintegrasi.
+                </li>
+                <li>
+                  konsisten dengan 
+                  seluruh kriteria yang 
+                  diuraikan sebelumnya,                   
+                </li>
+                <li>
+                  analisisnya dilakukan 
+                  secara komprehensif, 
+                  tepat, dan tajam untuk 
+                  mengidentifikasi akar 
+                  masalah di UPPS.                  
+                </li>
+                <li>
+                  analisisnya dilakukan 
+                  secara komprehensif, 
+                  tepat, dan tajam untuk 
+                  mengidentifikasi akar 
+                  masalah di UPPS.                  
+                </li>
+              </ol>         
+              <b><li>Nilai 3</li></b>
+              UPPS telah melakukan 
+              analisis capaian kinerja 
+              yang:
+              <ol>
+                <li>
+                  analisisnya didukung 
+                  oleh data/informasi yang 
+                  relevan (merujuk pada 
+                  pencapaian standar mutu 
+                  perguruan tinggi) dan 
+                  berkualitas (andal dan 
+                  memadai) yang didukung 
+                  oleh keberadaan 
+                  pangkalan data institusi 
+                  yang belum terintegrasi.
+                  
+                </li>
+                <li>
+                  konsisten dengan 
+                  sebagian besar (7 s.d. 8) 
+                  kriteria yang diuraikan 
+                  sebelumnya, 
+                </li>
+                <li>
+                  analisisnya dilakukan 
+                  secara komprehensif dan 
+                  tepat untuk 
+                  mengidentifikasi akar 
+                  masalah di UPPS.
+                </li>
+                <li>
+                  hasilnya dipublikasikan 
+                  kepada para pemangku 
+                  kepentingan internal serta 
+                  mudah diakses.
+                </li>
+              </ol>                                                 
+              <b><li>Nilai 2</li></b>
+              UPPS telah melakukan 
+              analisis capaian kinerja 
+              yang:
+              <ol>
+                <li>
+                  analisisnya didukung 
+                  oleh data/informasi yang 
+                  relevan (merujuk pada 
+                  pencapaian standar mutu 
+                  perguruan tinggi) dan 
+                  berkualitas (andal dan 
+                  memadai).                  
+                </li>
+                <li>
+                  konsisten dengan 
+                  sebagian (5 s.d. 6) kriteria 
+                  yang diuraikan 
+                  sebelumnya, 
+                </li>
+                <li>
+                  analisisnya dilakukan 
+                  secara komprehensif 
+                  untuk mengidentifikasi 
+                  akar masalah di UPPS.                  
+                </li>
+                <li>
+                  hasilnya dipublikasikan 
+                  kepada para pemangku 
+                  kepentingan internal.                  
+                </li>
+              </ol>                                         
+              <b><li>Nilai 1</li></b>  
+              UPPS telah melakukan 
+              analisis capaian kinerja 
+              yang:
+              <ol>
+                <li>
+                  analisisnya tidak 
+                  sepenuhnya didukung 
+                  oleh data/informasi yang 
+                  relevan (merujuk pada 
+                  pencapaian standar mutu 
+                  perguruan tinggi) dan 
+                  berkualitas (andal dan 
+                  memadai).                  
+                </li>
+                <li>
+                  konsisten dengan 
+                  sebagian kecil (kurang 
+                  dari 5) kriteria yang 
+                  diuraikan sebelumnya, 
+                </li>
+                <li>
+                  analisisnya dilakukan 
+                  tidak secara komprehensif 
+                  untuk mengidentifikasi 
+                  akar masalah di UPPS.                  
+                </li>
+                <li>
+                  hasilnya tidak 
+                  dipublikasikan.
+                </li>
+              </ol>                   
+              <b><li>Nilai 0</li></b> 
+              UPPS tidak melakukan 
+              analisis capaian kinerja.                   
+            </ol>         
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{-- modal C67--}}
+  <div class="modal fade" id="modalc67" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="modalc67">
+            Ketepatan analisis 
+            SWOT atau analisis 
+            yang relevan di dalam mengembangkan 
+            strategi.
+          </h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <ol style="list-style-type: none;">
+              <b><li>Nilai 4</li></b>
+              UPPS melakukan analisis 
+              SWOT atau analisis lain 
+              yang relevan, serta 
+              memenuhi aspek-aspek 
+              sebagai berikut:
+              <ol>
+                <li>
+                  melakukan identifikasi 
+                  kekuatan atau faktor 
+                  pendorong, kelemahan 
+                  atau faktor penghambat, 
+                  peluang dan ancaman 
+                  yang dihadapi UPPS 
+                  dilakukan secara tepat,
+                </li>
+                <li>
+                  memiliki keterkaitan 
+                  dengan hasil analisis 
+                  capaian kinerja,                  
+                </li>
+                <li>
+                  merumuskan strategi 
+                  pengembangan UPPS 
+                  yang berkesesuaian, dan
+                </li>
+                <li>
+                  menghasilkan program-program pengembangan 
+                  alternatif yang tepat.                  
+                </li>
+              </ol>
+              <b><li>Nilai 3</li></b>
+              UPPS melakukan analisis 
+              SWOT atau analisis lain 
+              yang relevan, serta 
+              memenuhi aspek-aspek 
+              sebagai berikut:
+              <ol>
+                <li>
+                  melakukan identifikasi 
+                  kekuatan atau faktor 
+                  pendorong, kelemahan 
+                  atau faktor penghambat, 
+                  peluang dan ancaman 
+                  yang dihadapi UPPS 
+                  dilakukan secara tepat,
+                </li>
+                <li>
+                  memiliki keterkaitan 
+                  dengan hasil analisis 
+                  capaian kinerja, dan                 
+                </li>
+                <li>
+                  merumuskan strategi 
+                  pengembangan UPPS 
+                  yang berkesesuaian
+                </li>
+              </ol>                                                 
+              <b><li>Nilai 2</li></b>
+              UPPS melakukan analisis 
+              SWOT atau analisis lain 
+              yang relevan, serta 
+              memenuhi aspek-aspek 
+              sebagai berikut:
+              <ol>
+                <li>
+                  melakukan identifikasi 
+                  kekuatan atau faktor 
+                  pendorong, kelemahan 
+                  atau faktor penghambat, 
+                  peluang dan ancaman 
+                  yang dihadapi UPPS 
+                  dilakukan secara tepat, dan
+                </li>
+                <li>
+                  memiliki keterkaitan 
+                  dengan hasil analisis 
+                  capaian kinerja                 
+                </li>
+              </ol>                                         
+              <b><li>Nilai 1</li></b>
+              UPPS melakukan analisis 
+              SWOT atau analisis lain 
+              yang memenuhi aspek-aspek sebagai berikut  
+              <ol>
+                <li>
+                  melakukan identifikasi 
+                  kekuatan atau faktor 
+                  pendorong, kelemahan 
+                  atau faktor penghambat, 
+                  peluang dan ancaman 
+                  yang dihadapi UPPS, dan                  
+                </li>
+                <li>
+                  memiliki keterkaitan 
+                  dengan hasil analisis 
+                  capaian kinerja, namun 
+                  tidak terstruktur dan tidak 
+                  sistematis.                  
+                </li>
+              </ol>                   
+              <b><li>Nilai 0</li></b>     
+              UPPS tidak melakukan 
+              analisis untuk 
+              mengembangkan 
+              strategi.              
+            </ol>         
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{-- modal C68--}}
+  <div class="modal fade" id="modalc68" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="modalc68">
+            Ketepatan di dalam 
+            menetapkan prioritas 
+            program 
+            pengembangan
+          </h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <ol style="list-style-type: none;">
+              <b><li>Nilai 4</li></b>
+              UPPS menetapkan 
+              prioritas program 
+              pengembangan 
+              berdasarkan hasil analisis 
+              SWOT atau analisis 
+              lainnya yang 
+              mempertimbangkan 
+              secara komprehensif:              
+              <ol>
+                <li>
+                  kapasitas UPPS
+                </li>
+                <li>
+                  kebutuhan UPPS dan 
+                  PS di masa depan,                  
+                </li>
+                <li>
+                  rencana strategis UPPS 
+                  yang berlaku,
+                </li>
+                <li>
+                  aspirasi dari pemangku 
+                  kepentingan internal dan 
+                  eksternal, serta
+                </li>
+                <li>
+                  program yang 
+                  menjamin keberlanjutan.                  
+                </li>
+              </ol>
+              <b><li>Nilai 3</li></b>
+              UPPS menetapkan 
+              prioritas program 
+              pengembangan 
+              berdasarkan hasil analisis 
+              SWOT atau analisis 
+              lainnya yang 
+              mempertimbangkan 
+              secara komprehensif:  
+              <ol>
+                <li>
+                  kapasitas UPPS
+                </li>
+                <li>
+                  kebutuhan UPPS dan 
+                  PS di masa depan,                  
+                </li>
+                <li>
+                  rencana strategis UPPS 
+                  yang berlaku, dan
+                </li>
+                <li>
+                  aspirasi dari pemangku 
+                  kepentingan internal dan 
+                  eksternal.
+                </li>
+              </ol>                                                 
+              <b><li>Nilai 2</li></b>
+              UPPS menetapkan 
+              prioritas program 
+              pengembangan 
+              berdasarkan hasil analisis 
+              SWOT atau analisis 
+              lainnya yang 
+              mempertimbangkan 
+              secara komprehensif:  
+              <ol>
+                <li>
+                  kapasitas UPPS
+                </li>
+                <li>
+                  kebutuhan UPPS dan 
+                  PS di masa depan, dan                  
+                </li>
+                <li>
+                  rencana strategis UPPS 
+                  yang berlaku.
+                </li>
+              </ol>                                         
+              <b><li>Nilai 1</li></b>
+              UPPS menetapkan 
+              prioritas program 
+              pengembangan namun 
+              belum mempertimbangan 
+              secara komprehensif:  
+              <ol>
+                <li>
+                  kapasitas UPPS
+                </li>
+                <li>
+                  kebutuhan UPPS dan 
+                  PS, serta                
+                </li>
+                <li>
+                  rencana strategis UPPS 
+                  yang berlaku.
+                </li>
+              </ol>                   
+              <b><li>Nilai 0</li></b>     
+              UPPS tidak menetapkan 
+              prioritas program 
+              pengembangan.             
+            </ol>         
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{-- modal C69--}}
+  <div class="modal fade" id="modalc69" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="modalc69">
+            UPPS memiliki 
+            kebijakan, ketersediaan 
+            sumberdaya, 
+            kemampuan 
+            melaksanakan, dan 
+            kerealistikan program.            
+          </h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <ol style="list-style-type: none;">
+              <b><li>Nilai 4</li></b>
+              UPPS memiliki kebijakan 
+              dan upaya yang 
+              diturunkan ke dalam 
+              berbagai peraturan untuk 
+              menjamin keberlanjutan 
+              program yang mencakup:
+              <ol>
+                <li>
+                  alokasi sumber daya, 
+                </li>
+                <li>
+                  kemampuan 
+                  melaksanakan program 
+                  pengembangan,
+                </li>
+                <li>
+                  rencana penjaminan 
+                  mutu yang berkelanjutan, 
+                  dan 
+                </li>
+                <li>
+                  keberadaan dukungan 
+                  pemangku kepentingan 
+                  eksternal
+                </li>
+              </ol>
+              <b><li>Nilai 3</li></b>
+              UPPS memiliki kebijakan 
+              dan upaya yang 
+              diturunkan ke dalam 
+              berbagai peraturan untuk 
+              menjamin keberlanjutan 
+              program yang mencakup:
+              <ol>
+                <li>
+                  alokasi sumber daya, 
+                </li>
+                <li>
+                  kemampuan 
+                  melaksanakan program 
+                  pengembangan, 
+                  dan
+                </li>
+                <li>
+                  rencana penjaminan 
+                  mutu yang berkelanjutan. 
+                </li>
+              </ol>                                                 
+              <b><li>Nilai 2</li></b>
+              UPPS memiliki kebijakan 
+              dan upaya untuk 
+              menjamin keberlanjutan 
+              program yang mencakup:              
+              <ol>
+                <li>
+                  alokasi sumber daya, 
+                </li>
+                <li>
+                  kemampuan 
+                  melaksanakan program 
+                  pengembangan, 
+                  dan
+                </li>
+                <li>
+                  rencana penjaminan 
+                  mutu yang berkelanjutan. 
+                </li>
+              </ol>                                         
+              <b><li>Nilai 1</li></b>  
+              UPPS memiliki kebijakan 
+              dan upaya namun belum 
+              cukup untuk menjamin 
+              keberlanjutan program             
+              <b><li>Nilai 0</li></b>     
+              UPPS tidak memiliki 
+              kebijakan dan upaya 
+              untuk menjamin 
+              keberlanjutan program.           
+            </ol>         
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 
@@ -4435,8 +5001,18 @@
 
 
 
+@foreach ($penilaian as $penilaian)
 
-
+  @foreach ($file_ded as $file_ded)
+  <center>
+    <iframe class="col-6 col-lg-9 ml-auto mr-auto mb-4 mt-5" src="/storage/{{ $file_ded['nama_file'] }}" width="45%" height="500"></iframe>
+  </center>
+  @endforeach
+  @foreach ($file_dkps as $file_dkps)
+  <center>
+        <iframe class="col-6 col-lg-9 ml-auto mr-auto mb-4" src="https://drive.google.com/file/d/{{ $file_dkps['nama_file'] }}/preview" width="45%" height="500" allow="autoplay"></iframe>
+  </center>
+  @endforeach
 
   <header class="header">
     <h1 class="header__title">Pengisisan Form Penilaian</h1>
@@ -6124,6 +6700,123 @@
                     </div>
                   </div>
                 </div>
+
+                {{-- d1 --}}
+                <div class="multisteps-form__panel shadow p-4 rounded bg-white" data-animation="scaleIn">
+                  <h3 class="multisteps-form__title">D. Analisis dan Penetapan Program Pengembangan </h3>
+                  <div class="multisteps-form__content">
+                    <div class="form-row mt-4">
+                      <div class="col-12 col-sm">
+                        <table class="table">
+                          <thead>
+                            <tr>
+                              <th scope="col">No</th>
+                              <th scope="col">Elemen</th>
+                              <th scope="col">Indikator</th>
+                              <th scope="col">DESKRIPSI PENILAIAN ASESOR (OPSIONAL)</th>
+                              <th scope="col">Skor</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <th scope="row">66</th>
+                              <th scope="row">
+                                D.1 
+                                Analisis dan 
+                                Capaian Kinerja                                
+                              </th>
+                              <td>
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalc66">
+                                  <i class="bi bi-info-lg"></i>
+                                </button>
+                              </td>
+                              <td>
+                                <div class="form-floating col-md-15">
+                                  <textarea class="multisteps-form__input form-control" placeholder="opsional" id='f66' name="f66" style="height: 100px" >{{ $penilaian['f66'] }}</textarea>
+                                </div>
+                              </td>
+                              <td>
+                                <div class="col-md-auto">
+                                  <input class="multisteps-form__input form-control" type="number" placeholder="0-4/2.1" name="n66" id='n66' value="{{ $penilaian['n66'] }}"/>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <th scope="row">67</th>
+                              <th scope="row">                              D.2 
+                                Analisis SWOT 
+                                atau Analisis Lain yang 
+                                Relevan </th>                             
+                              <td>
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalc67">
+                                  <i class="bi bi-info-lg"></i>
+                                </button>
+                              </td>
+                              <td>
+                                <div class="form-floating col-md-15">
+                                  <textarea class="multisteps-form__input form-control" placeholder="opsional" id='f67' name="f67" style="height: 100px" >{{ $penilaian['f67'] }}</textarea>
+                                </div>
+                              </td>
+                              <td>
+                                <div class="col-md-auto">
+                                  <input class="multisteps-form__input form-control" type="number" placeholder="0-4/2.1" name="n67" id='n67' value="{{ $penilaian['n67'] }}"/>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <th scope="row">68</th>
+                              <th scope="row">
+                                D.3
+                                Program 
+                                Pengembangan                                
+                              </th>
+                              <td>
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalc68">
+                                  <i class="bi bi-info-lg"></i>
+                                </button>
+                              </td>
+                              <td>
+                                <div class="form-floating col-md-15">
+                                  <textarea class="multisteps-form__input form-control" placeholder="opsional" id='f68' name="f68" style="height: 100px" >{{ $penilaian['f68'] }}</textarea>
+                                </div>
+                              </td>
+                              <td>
+                                <div class="col-md-auto">
+                                  <input class="multisteps-form__input form-control" type="number" placeholder="0-4/2.1" name="n68" id='n68' value="{{ $penilaian['n68'] }}"/>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <th scope="row">69</th>
+                              <th scope="row">D.4 
+                                Program 
+                                Keberlanjutan </th>
+                              <td>
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalc69">
+                                  <i class="bi bi-info-lg"></i>
+                                </button>
+                              </td>
+                              <td>
+                                <div class="form-floating col-md-15">
+                                  <textarea class="multisteps-form__input form-control" placeholder="opsional" id='f69' name="f69" style="height: 100px" >{{ $penilaian['f69'] }}</textarea>
+                                </div>
+                              </td>
+                              <td>
+                                <div class="col-md-auto">
+                                  <input class="multisteps-form__input form-control" type="number" placeholder="0-4/2.1" name="n69" id='n69' value="{{ $penilaian['n69'] }}"/>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                    <div class="button-row d-flex mt-4">
+                      <button class="btn btn-primary js-btn-prev" type="button" title="Prev">Prev</button>
+                      <button class='btn btn-primary ml-auto' type='button' id='next12_btn'>Save</button>
+                    </div>
+                  </div>
+                </div>
               </form>
             </div>
           </div>
@@ -6131,7 +6824,11 @@
       </div>
     </div>
   </div>
+@php
+    $o = "/cobaaa/".$penilaian['id_pengajuan']
+@endphp
 
+@endforeach
   <script>
 
 
@@ -6150,6 +6847,7 @@
       } else {
         const data_form = {
           '_token': '{{ csrf_token() }}',
+          'id': '{{ $penilaian['id'] }}',
           'f1': $('#f1').val(),
           'n1': $('#n1').val(),
         };
@@ -6184,6 +6882,7 @@
       } else {
         const data_form = {
           '_token': '{{ csrf_token() }}',
+          'id': '{{ $penilaian['id'] }}',
           'f2': $('#f2').val(),
           'n2': $('#n2').val(),
         };
@@ -6230,6 +6929,7 @@
       } else {
         const data_form = {
           '_token': '{{ csrf_token() }}',
+          'id': '{{ $penilaian['id'] }}',
           'f3': $('#f3').val(),
           'n3': $('#n3').val(),
           'f4': $('#f4').val(),
@@ -6300,6 +7000,7 @@
       } else {
         const data_form = {
           '_token': '{{ csrf_token() }}',
+          'id': '{{ $penilaian['id'] }}',
           'f6': $('#f6').val(),
           'n6': $('#n6').val(),
           'f7': $('#f7').val(),
@@ -6360,6 +7061,7 @@
       } else {
         const data_form = {
           '_token': '{{ csrf_token() }}',
+          'id': '{{ $penilaian['id'] }}',
           'f14': $('#f14').val(),
           'n14': $('#n14').val(),
           'f15': $('#f15').val(),
@@ -6457,6 +7159,7 @@
       } else {
         const data_form = {
           '_token': '{{ csrf_token() }}',
+          'id': '{{ $penilaian['id'] }}',
           'f17': $('#f17').val(),
           'n17': $('#n17').val(),
           'f18': $('#f18').val(),
@@ -6542,6 +7245,7 @@
       } else {
         const data_form = {
           '_token': '{{ csrf_token() }}',
+          'id': '{{ $penilaian['id'] }}',
           'f32': $('#f32').val(),
           'n32': $('#n32').val(),
           'f33': $('#f33').val(),
@@ -6629,6 +7333,7 @@
       } else {
         const data_form = {
           '_token': '{{ csrf_token() }}',
+          'id': '{{ $penilaian['id'] }}',
           'f38': $('#f38').val(),
           'n38': $('#n38').val(),
           'f39': $('#f39').val(),
@@ -6690,6 +7395,7 @@
       } else {
         const data_form = {
           '_token': '{{ csrf_token() }}',
+          'id': '{{ $penilaian['id'] }}',
           'f48': $('#f48').val(),
           'n48': $('#n48').val(),
           'f49': $('#f49').val(),
@@ -6734,6 +7440,7 @@
       } else {
         const data_form = {
           '_token': '{{ csrf_token() }}',
+          'id': '{{ $penilaian['id'] }}',
           'f50': $('#f50').val(),
           'n50': $('#n50').val(),
           'f51': $('#f51').val(),
@@ -6826,34 +7533,35 @@
       } else {
         const data_form = {
           '_token': '{{ csrf_token() }}',
-          'f52': $('#f17').val(),
-          'n52': $('#n17').val(),
-          'f53': $('#f18').val(),
-          'n53': $('#n18').val(),
-          'f54': $('#f19').val(),
-          'n54': $('#n19').val(),
-          'f55': $('#f20').val(),
-          'n55': $('#n20').val(),
-          'f56': $('#f21').val(),
-          'n56': $('#n21').val(),
-          'f57': $('#f22').val(),
-          'n57': $('#n22').val(),
-          'f58': $('#f23').val(),
-          'n58': $('#n23').val(),
-          'f59': $('#f24').val(),
-          'n59': $('#n24').val(),
-          'f60': $('#f25').val(),
-          'n60': $('#n25').val(),
-          'f61': $('#f26').val(),
-          'n61': $('#n26').val(),
-          'f62': $('#f27').val(),
-          'n62': $('#n27').val(),
-          'f63': $('#f28').val(),
-          'n63': $('#n28').val(),
-          'f64': $('#f29').val(),
-          'n64': $('#n29').val(),
-          'f65': $('#f30').val(),
-          'n65': $('#n30').val(),
+          'id': '{{ $penilaian['id'] }}',
+          'f52': $('#f52').val(),
+          'n52': $('#n52').val(),
+          'f53': $('#f53').val(),
+          'n53': $('#n53').val(),
+          'f54': $('#f54').val(),
+          'n54': $('#n54').val(),
+          'f55': $('#f55').val(),
+          'n55': $('#n55').val(),
+          'f56': $('#f56').val(),
+          'n56': $('#n56').val(),
+          'f57': $('#f57').val(),
+          'n57': $('#n57').val(),
+          'f58': $('#f58').val(),
+          'n58': $('#n58').val(),
+          'f59': $('#f59').val(),
+          'n59': $('#n59').val(),
+          'f60': $('#f60').val(),
+          'n60': $('#n60').val(),
+          'f61': $('#f61').val(),
+          'n61': $('#n61').val(),
+          'f62': $('#f62').val(),
+          'n62': $('#n62').val(),
+          'f63': $('#f63').val(),
+          'n63': $('#n63').val(),
+          'f64': $('#f64').val(),
+          'n64': $('#n64').val(),
+          'f65': $('#f65').val(),
+          'n65': $('#n65').val(),
         };
         $.ajax({
             type: "POST",
@@ -6869,10 +7577,66 @@
         $('#next11_btn_asli').click();
       }
     });
+    // tombol next 12
+    $('#next12_btn').click(function() {
+      // alert('coba');
+      var is_valid = true;
+
+      if ($('#n66').val() == "" || $('#n67').val() == "" || $('#n68').val() == "" || $('#n69').val() == "") {
+        is_valid = false;
+        if ($('#n66').val() == "") {
+          alert('no 66 belum diisi');
+        }else if ($('#n67').val() == "") {
+          alert('no 67 belum diisi');
+        }else if ($('#n68').val() == "") {
+          alert('no 68 belum diisi');
+        }else if ($('#n69').val() == "") {
+          alert('no 69 belum diisi');
+        }
+      } else if ($('#n66').val() > 4 || $('#n66').val() < 0 || $('#n67').val() > 4 || $('#n67').val() < 0 || $('#n68').val() > 4 || $('#n68').val() < 0 || $('#n69').val() > 4 || $('#n69').val() < 0) {
+        is_valid = false;
+        if ($('#n66').val() > 4 || $('#n66').val() < 0) {
+          alert("No 66 Nilai Harus 0-4");
+        }else if ($('#n67').val() > 4 || $('#n67').val() < 0) {
+          alert("No 67 Nilai Harus 0-4");
+        }else if ($('#n68').val() > 4 || $('#n68').val() < 0) {
+          alert("No 68 Nilai Harus 0-4");
+        }else if ($('#n69').val() > 4 || $('#n69').val() < 0) {
+          alert("No 69 Nilai Harus 0-4");
+        }
+        
+      } else {
+        const data_form = {
+          '_token': '{{ csrf_token() }}',
+          'id': '{{ $penilaian['id'] }}',
+          'f66': $('#f66').val(),
+          'n66': $('#n66').val(),
+          'f67': $('#f67').val(),
+          'n67': $('#n67').val(),
+          'f68': $('#f68').val(),
+          'n68': $('#n68').val(),
+          'f69': $('#f69').val(),
+          'n69': $('#n69').val(),
+        };
+        $.ajax({
+            type: "POST",
+            url: '/multi/autosave12',
+            data: data_form,
+          })
+          .done(function(data) {
+            const kontol = JSON.parse(data);
+            alert(kontol);
+          });
+      }
+
+      if (is_valid) {
+        window.location.href="{{ $o }}"
+      }
+    });
 
   </script>
 
-  <script src="js/function.js"></script>
+  <script src="/js/function.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 
 </body>

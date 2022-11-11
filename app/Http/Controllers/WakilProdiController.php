@@ -197,9 +197,9 @@ class WakilProdiController extends Controller
         filePengajuan::create([
             'id_pengajuan' => $id_pengaju,
             'nama_file' => $url,
-            'size' => $file_ded->getSize(),
-            'nama_asli_file' => $file_ded->getClientOriginalName(),
-            'lokasi' => $file_ded->store('dkps'),
+            'size' => $file_dkps->getSize(),
+            'nama_asli_file' => $file_dkps->getClientOriginalName(),
+            'lokasi' => $file_dkps->store('dkps'),
             'tipe' => "dkps",
         ]);
 

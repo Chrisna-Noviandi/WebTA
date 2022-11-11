@@ -33,7 +33,11 @@
     @if ($datas['status'] == "sudah")
     <a href="/daftar-pengajuan-asesor/detail-penilaian/{{ $datas['id'] }}" class="btn btn-primary">Detail Nilai</a>    
     @else
-    <a href="/daftar-pengajuan-asesor/form-penilaian/{{ $datas['id'] }}" class="btn btn-primary">Nilai</a>   
+      @if ($datas['status'] == "hampir")
+      <a href="/daftar-pengajuan-asesor/form-penilaian/{{ $datas['id'] }}" class="btn btn-primary">Lanjutkan Penilaian</a>       
+      @else
+      <a href="/daftar-pengajuan-asesor/form-penilaian/{{ $datas['id'] }}" class="btn btn-primary">Nilai</a>
+      @endif 
     @endif
     <a href="/daftar-pengajuan-asesor/detail-pengajuan/{{ $datas['id'] }}" class="btn btn-primary">Lihat Detail</a>
   </div>
