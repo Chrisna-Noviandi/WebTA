@@ -48,7 +48,18 @@ Route::post('/usermanagement/update', [AdminController::class, 'update'])->middl
 Route::get('/home-uups', [WakilProdiController::class, 'home'])->middleware('auth');
 Route::get('/pengajuan', [WakilProdiController::class, 'daftar'])->middleware('auth');
 Route::get('/pengajuan/detail/{id}', [WakilProdiController::class, 'detail'])->middleware('auth');
+Route::get('/pengajuan/detail/edit/{id}', [WakilProdiController::class, 'detailEdit'])->middleware('auth');
+Route::post('/pengajuan/detail/edit/{id}', [WakilProdiController::class, 'detailEditSave'])->middleware('auth');
 Route::get('/pengajuan/detail/download/{id}', [WakilProdiController::class, 'download'])->middleware('auth');
+
+// upload file
+Route::get('/pengajuan/detail/upload-ded/{id}', [WakilProdiController::class, 'uploadDED'])->middleware('auth');
+Route::post('/pengajuan/detail/upload-ded/{id}', [WakilProdiController::class, 'uploadDEDSave'])->middleware('auth');
+Route::get('/pengajuan/detail/upload-dkps/{id}', [WakilProdiController::class, 'uploadDKPS'])->middleware('auth');
+Route::post('/pengajuan/detail/upload-dkps/{id}', [WakilProdiController::class, 'uploadDKPSSave'])->middleware('auth');
+Route::get('/pengajuan/detail/upload-lampiran/{id}', [WakilProdiController::class, 'uploadLampiran'])->middleware('auth');
+Route::post('/pengajuan/detail/upload-lampiran/{id}', [WakilProdiController::class, 'uploadLampiranSave'])->middleware('auth');
+
 Route::get('/pengajuan/tambah-pengajuan', [WakilProdiController::class, 'tambah'])->middleware('auth');
 Route::get('/pengajuan/lihat-nilai/{id}', [WakilProdiController::class, 'detailNilai'])->middleware('auth');
 Route::post('/register-pengajuan', [WakilProdiController::class, 'ajukan']);
@@ -107,7 +118,7 @@ Route::get('/profile3/editpassword', [EditPasswordController::class, 'show3'])->
 Route::post('/editpassword/update', [EditPasswordController::class, 'edit'])->middleware('auth');
 
 //autentikasi google
-Route::get('/authgdrive', [WakilProdiController::class, 'gdrive'])->middleware('auth');
+Route::get('/authgdrive/{id}', [WakilProdiController::class, 'gdrive'])->middleware('auth');
 Route::get('/google-drive/callback', [WakilProdiController::class, 'getAccessToken'])->middleware('auth');
 
 // Route::get('/authgdrive', function () {

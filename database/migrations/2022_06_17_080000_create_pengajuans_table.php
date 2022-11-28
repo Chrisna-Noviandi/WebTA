@@ -27,9 +27,12 @@ return new class extends Migration
             $table->string('ts');
             $table->string('nama_narahubung');
             $table->string('telepon_seluler');
-            $table->string('id_acesor');
+            $table->string('id_acesor1')->nullable();
+            $table->string('status_acesor1')->nullable();
+            $table->string('id_acesor2')->nullable();
+            $table->string('status_acesor2')->nullable();
             $table->string('id_user');
-            $table->string('status');
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }

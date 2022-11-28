@@ -83,7 +83,7 @@
 
             .bg {
             /* The image used */
-            background-image: url("image/logo2.jpg");
+            background-image: url("image/logo3.jpg");
 
             /* Full height */
             height: 100%;
@@ -101,7 +101,7 @@
             <link href="signin.css" rel="stylesheet">
         </head>
         <body class="text-center bg">
-
+            <img class="mb-5 " src="/image/logo.png" alt="" width="600" height="250">
         @if(session()->has('loginError'))
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                 {{ session('loginError') }}
@@ -114,7 +114,7 @@
             <form action="/login" method="post">
                 @csrf
 
-                <img class="mb-1" src="/image/logo.png" alt="" width="370" height="215">
+                
 
                 <h1 class="h3 mb-3 fw-normal"><Label>Login</Label></h1>
 
@@ -122,6 +122,7 @@
                     <input type="text" name="username" class="form-control" id="floatingInput" placeholder="31119000" autofocus required>
                     <label for="floatingInput">Username</label>
                 </div>
+                
                 <div class="form-floating">
                     <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password" required>
                     <label for="floatingPassword">Password</label>

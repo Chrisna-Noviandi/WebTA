@@ -39,7 +39,7 @@
               </p>
             <li class="mt-3" style="font-weight: bold">Dosen dan Tenaga Kependidikan</li>
               <p style="text-align: justify;"> 
-                {!! $data['b15'] !!}             
+                {!! $data['b5'] !!}             
               </p>
             <li class="mt-3" style="font-weight: bold">Keuangan, Sarana, dan Prasarana</li>
               <p style="text-align: justify;"> 
