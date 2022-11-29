@@ -24,7 +24,7 @@ class AsesorController extends Controller
     {
         $data = auth()->user()->type;
         if ($data == "Acesor") {
-            return view('asesor.pengajuan', ["data" => pengajuan::where('id_acesor', [auth()->user()->id])->latest()->paginate(3)]);
+            return view('asesor.pengajuan', ["data" => pengajuan::where('id_acesor1', [auth()->user()->id])->orWhere('id_acesor2', [auth()->user()->id])->latest()->paginate(3)]);
         } else {
             return redirect()->intended('/home');
         }
@@ -35,7 +35,7 @@ class AsesorController extends Controller
         $data = auth()->user()->type;
         if ($data == "Acesor") {
             return view('asesor.multiform', [
-                "penilaian" => penilaian::where('id_pengajuan', $id_pengajuan)->get(),
+                "penilaian" => penilaian::where('id_pengajuan', $id_pengajuan)->where('id_acesor', auth()->user()->id)->get(),
                 "file_ded" => filePengajuan::where('id_pengajuan', $id_pengajuan)->where('tipe', 'ded')->get(),
                 "file_dkps" => filePengajuan::where('id_pengajuan', $id_pengajuan)->where('tipe', 'dkps')->get()
             ]);
@@ -44,11 +44,11 @@ class AsesorController extends Controller
         }
     }
 
-    public function detailPenilaian($id)
+    public function detailPenilaian($id, $id_acesor)
     {
         $data = auth()->user()->type;
         if ($data == "Acesor") {
-            return view('asesor.detail-penilaian', ["data" => penilaian::where('id_pengajuan', $id)->get()]);
+            return view('asesor.detail-penilaian', ["data" => penilaian::where('id_pengajuan', $id)->where('id_acesor', $id_acesor)->get()]);
         } else {
             return redirect()->intended('/home');
         }
@@ -252,23 +252,36 @@ class AsesorController extends Controller
     public function autosave1(Request $request)
     {
         json_encode(
-            penilaian::where('id', $request['id'])
+            penilaian::where('id_pengajuan', $request['id'])
+                ->where('id_acesor', auth()->user()->id)
                 ->update([
                     'f1' => $request['f1'],
                     'n1' => $request['n1']
                 ])
         );
 
-        json_encode(
-            pengajuan::where('id', $request['id'])
-                ->update([
-                    'status' => "hampir"
-                ])
-        );
+        $pengajuan = pengajuan::find($request['id']);
+
+        if ($pengajuan['id_acesor1'] == auth()->user()->id) {
+            json_encode(
+                pengajuan::where('id', $request['id'])
+                    ->update([
+                        'status_acesor1' => "hampir"
+                    ])
+            );
+        } else {
+            json_encode(
+                pengajuan::where('id', $request['id'])
+                    ->update([
+                        'status_acesor2' => "hampir"
+                    ])
+            );
+        }
     }
     public function autosave2(Request $request)
     {
-        json_encode(penilaian::where('id', $request['id'])
+        json_encode(penilaian::where('id_pengajuan', $request['id'])
+            ->where('id_acesor', auth()->user()->id)
             ->update([
                 'f2' => $request['f2'],
                 'n2' => $request['n2']
@@ -276,7 +289,8 @@ class AsesorController extends Controller
     }
     public function autosave3(Request $request)
     {
-        json_encode(penilaian::where('id', $request['id'])
+        json_encode(penilaian::where('id_pengajuan', $request['id'])
+            ->where('id_acesor', auth()->user()->id)
             ->update([
                 'f3' => $request['f3'],
                 'n3' => $request['n3'],
@@ -288,7 +302,8 @@ class AsesorController extends Controller
     }
     public function autosave4(Request $request)
     {
-        json_encode(penilaian::where('id', $request['id'])
+        json_encode(penilaian::where('id_pengajuan', $request['id'])
+            ->where('id_acesor', auth()->user()->id)
             ->update([
                 'f6' => $request['f6'],
                 'n6' => $request['n6'],
@@ -310,7 +325,8 @@ class AsesorController extends Controller
     }
     public function autosave5(Request $request)
     {
-        json_encode(penilaian::where('id', $request['id'])
+        json_encode(penilaian::where('id_pengajuan', $request['id'])
+            ->where('id_acesor', auth()->user()->id)
             ->update([
                 'f14' => $request['f14'],
                 'n14' => $request['n14'],
@@ -322,7 +338,8 @@ class AsesorController extends Controller
     }
     public function autosave6(Request $request)
     {
-        json_encode(penilaian::where('id', $request['id'])
+        json_encode(penilaian::where('id_pengajuan', $request['id'])
+            ->where('id_acesor', auth()->user()->id)
             ->update([
                 'f17' => $request['f17'],
                 'n17' => $request['n17'],
@@ -358,7 +375,8 @@ class AsesorController extends Controller
     }
     public function autosave7(Request $request)
     {
-        json_encode(penilaian::where('id', $request['id'])
+        json_encode(penilaian::where('id_pengajuan', $request['id'])
+            ->where('id_acesor', auth()->user()->id)
             ->update([
                 'f32' => $request['f32'],
                 'n32' => $request['n32'],
@@ -376,7 +394,8 @@ class AsesorController extends Controller
     }
     public function autosave8(Request $request)
     {
-        json_encode(penilaian::where('id', $request['id'])
+        json_encode(penilaian::where('id_pengajuan', $request['id'])
+            ->where('id_acesor', auth()->user()->id)
             ->update([
                 'f38' => $request['f38'],
                 'n38' => $request['n38'],
@@ -402,7 +421,8 @@ class AsesorController extends Controller
     }
     public function autosave9(Request $request)
     {
-        json_encode(penilaian::where('id', $request['id'])
+        json_encode(penilaian::where('id_pengajuan', $request['id'])
+            ->where('id_acesor', auth()->user()->id)
             ->update([
                 'f48' => $request['f48'],
                 'n48' => $request['n48'],
@@ -412,7 +432,8 @@ class AsesorController extends Controller
     }
     public function autosave10(Request $request)
     {
-        json_encode(penilaian::where('id', $request['id'])
+        json_encode(penilaian::where('id_pengajuan', $request['id'])
+            ->where('id_acesor', auth()->user()->id)
             ->update([
                 'f50' => $request['f50'],
                 'n50' => $request['n50'],
@@ -422,7 +443,8 @@ class AsesorController extends Controller
     }
     public function autosave11(Request $request)
     {
-        json_encode(penilaian::where('id', $request['id'])
+        json_encode(penilaian::where('id_pengajuan', $request['id'])
+            ->where('id_acesor', auth()->user()->id)
             ->update([
                 'f52' => $request['f52'],
                 'n52' => $request['n52'],
@@ -456,7 +478,8 @@ class AsesorController extends Controller
     }
     public function autosave12(Request $request)
     {
-        json_encode(penilaian::where('id', $request['id'])
+        json_encode(penilaian::where('id_pengajuan', $request['id'])
+            ->where('id_acesor', auth()->user()->id)
             ->update([
                 'f66' => $request['f66'],
                 'n66' => $request['n66'],
@@ -557,10 +580,19 @@ class AsesorController extends Controller
                     'nilai' => "Tidak Terakredetasi"
                 ]);
         }
-        pengajuan::where('id', $n['id'])
-            ->update([
-                'status' => "sudah"
-            ]);
+        $pengajuan2 = pengajuan::find($n['id_pengajuan']);
+        if ($pengajuan2['id_acesor1'] == auth()->user()->id) {
+            pengajuan::where('id', $pengajuan2['id'])
+                ->update([
+                    'status_acesor1' => "sudah"
+                ]);
+        } else {
+            pengajuan::where('id', $pengajuan2['id'])
+                ->update([
+                    'status_acesor2' => "sudah"
+                ]);
+        }
+
 
         return redirect()->intended('/daftar-pengajuan-asesor');
     }

@@ -31,6 +31,7 @@ return new class extends Migration
             $table->string('status_acesor1')->nullable();
             $table->string('id_acesor2')->nullable();
             $table->string('status_acesor2')->nullable();
+            $table->string('tolak')->nullable();
             $table->string('id_user');
             $table->string('status')->nullable();
             $table->timestamps();

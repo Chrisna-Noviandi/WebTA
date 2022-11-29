@@ -1185,8 +1185,8 @@
         </td>
     </tr>
     </tbody>
-  </table>
+</table>
 
 
-  @endforeach
+ @endforeach
 @endsection

@@ -5004,14 +5004,14 @@
 
 @foreach ($penilaian as $penilaian)
 
-  @foreach ($file_ded as $file_ded)
+  @foreach ($file_ded as $file_ded1)
   <center>
-    <iframe class="col-6 col-lg-9 ml-auto mr-auto mb-4 mt-5" src="/storage/{{ $file_ded['nama_file'] }}" width="45%" height="500"></iframe>
+    <iframe class="col-6 col-lg-9 ml-auto mr-auto mb-4 mt-5" src="/storage/{{ $file_ded1['nama_file'] }}" width="45%" height="500"></iframe>
   </center>
   @endforeach
-  @foreach ($file_dkps as $file_dkps)
+  @foreach ($file_dkps as $file_dkps1)
   <center>
-        <iframe class="col-6 col-lg-9 ml-auto mr-auto mb-4" src="https://drive.google.com/file/d/{{ $file_dkps['nama_file'] }}/preview" width="45%" height="500" allow="autoplay"></iframe>
+        <iframe class="col-6 col-lg-9 ml-auto mr-auto mb-4" src="https://drive.google.com/file/d/{{ $file_dkps1['nama_file'] }}/preview" width="45%" height="500" allow="autoplay"></iframe>
   </center>
   @endforeach
 
@@ -10525,7 +10525,7 @@
     </div>
   </div>
 @php
-    $o = "/cobaaa/".$penilaian['id_pengajuan']
+    $o = "/cobaaa/".$penilaian['id']
 @endphp
 
 @endforeach
@@ -10562,7 +10562,7 @@
       } else {
         const data_form = {
           '_token': '{{ csrf_token() }}',
-          'id': '{{ $penilaian['id'] }}',
+          'id': '{{ $penilaian['id_pengajuan'] }}',
           'f1': $('#f1').val(),
           'n1': $('#n1').val(),
         };
@@ -10607,7 +10607,7 @@
       } else {
         const data_form = {
           '_token': '{{ csrf_token() }}',
-          'id': '{{ $penilaian['id'] }}',
+          'id': '{{ $penilaian['id_pengajuan'] }}',
           'f2': $('#f2').val(),
           'n2': $('#n2').val(),
         };
@@ -10684,7 +10684,7 @@
       } else {
         const data_form = {
           '_token': '{{ csrf_token() }}',
-          'id': '{{ $penilaian['id'] }}',
+          'id': '{{ $penilaian['id_pengajuan'] }}',
           'f3': $('#f3').val(),
           'n3': $('#n3').val(),
           'f4': $('#f4').val(),
@@ -10815,7 +10815,7 @@
       } else {
         const data_form = {
           '_token': '{{ csrf_token() }}',
-          'id': '{{ $penilaian['id'] }}',
+          'id': '{{ $penilaian['id_pengajuan'] }}',
           'f6': $('#f6').val(),
           'n6': $('#n6').val(),
           'f7': $('#f7').val(),
@@ -10876,7 +10876,7 @@
       } else {
         const data_form = {
           '_token': '{{ csrf_token() }}',
-          'id': '{{ $penilaian['id'] }}',
+          'id': '{{ $penilaian['id_pengajuan'] }}',
           'f14': $('#f14').val(),
           'n14': $('#n14').val(),
           'f15': $('#f15').val(),
@@ -10974,7 +10974,7 @@
       } else {
         const data_form = {
           '_token': '{{ csrf_token() }}',
-          'id': '{{ $penilaian['id'] }}',
+          'id': '{{ $penilaian['id_pengajuan'] }}',
           'f17': $('#f17').val(),
           'n17': $('#n17').val(),
           'f18': $('#f18').val(),
@@ -11060,7 +11060,7 @@
       } else {
         const data_form = {
           '_token': '{{ csrf_token() }}',
-          'id': '{{ $penilaian['id'] }}',
+          'id': '{{ $penilaian['id_pengajuan'] }}',
           'f32': $('#f32').val(),
           'n32': $('#n32').val(),
           'f33': $('#f33').val(),
@@ -11148,7 +11148,7 @@
       } else {
         const data_form = {
           '_token': '{{ csrf_token() }}',
-          'id': '{{ $penilaian['id'] }}',
+          'id': '{{ $penilaian['id_pengajuan'] }}',
           'f38': $('#f38').val(),
           'n38': $('#n38').val(),
           'f39': $('#f39').val(),
@@ -11210,7 +11210,7 @@
       } else {
         const data_form = {
           '_token': '{{ csrf_token() }}',
-          'id': '{{ $penilaian['id'] }}',
+          'id': '{{ $penilaian['id_pengajuan'] }}',
           'f48': $('#f48').val(),
           'n48': $('#n48').val(),
           'f49': $('#f49').val(),
@@ -11255,7 +11255,7 @@
       } else {
         const data_form = {
           '_token': '{{ csrf_token() }}',
-          'id': '{{ $penilaian['id'] }}',
+          'id': '{{ $penilaian['id_pengajuan'] }}',
           'f50': $('#f50').val(),
           'n50': $('#n50').val(),
           'f51': $('#f51').val(),
@@ -11348,7 +11348,7 @@
       } else {
         const data_form = {
           '_token': '{{ csrf_token() }}',
-          'id': '{{ $penilaian['id'] }}',
+          'id': '{{ $penilaian['id_pengajuan'] }}',
           'f52': $('#f52').val(),
           'n52': $('#n52').val(),
           'f53': $('#f53').val(),
@@ -11423,7 +11423,7 @@
       } else {
         const data_form = {
           '_token': '{{ csrf_token() }}',
-          'id': '{{ $penilaian['id'] }}',
+          'id': '{{ $penilaian['id_pengajuan'] }}',
           'f66': $('#f66').val(),
           'n66': $('#n66').val(),
           'f67': $('#f67').val(),

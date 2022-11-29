@@ -26,7 +26,7 @@
             Program : {{ $pengajuan['program'] }}
           </div>
           <div class="col-sm-6" style="text-align: right">
-            @if ($pengajuan['status'] == 'belum' || $pengajuan['status'] == 'ditolak')
+            @if ($pengajuan['status'] == 'belum' || $pengajuan['status'] == 'tolak')
             <a href="/pengajuan/detail/edit/{{ $pengajuan['id'] }}"><button type="button" class="btn btn-outline-dark">EDIT</button></a>
             @endif
           </div>
@@ -80,7 +80,13 @@
             <tr>
               <td>Telepon Seluler </td>
               <td>{{ $pengajuan['telepon_seluler'] }}</td>
-            </tr>      
+            </tr>
+            @if ($pengajuan['status'] == 'tolak')
+            <tr style="color: red">
+              <td style="color: red">Pengajuan di Tolak Karena</td>
+              <td style="color: red">{!! $pengajuan['tolak'] !!}</td>
+            </tr>  
+            @endif      
           </tbody>
         </table>
       @php
@@ -112,7 +118,7 @@
             </ul>
           @endif
           <center class="mt-3">
-            @if ($pengajuan['status'] == 'belum' || $pengajuan['status'] == 'ditolak')
+            @if ($pengajuan['status'] == 'belum' || $pengajuan['status'] == 'tolak')
               <a href="/pengajuan/detail/upload-ded/{{ $pengajuan['id'] }}"><button type="button" class="btn btn-outline-dark">UPLOAD</button></a>
             @endif
           </center>
@@ -132,7 +138,7 @@
             @endforeach    
           @endif 
           <center class="mt-3">
-            @if ($pengajuan['status'] == 'belum' || $pengajuan['status'] == 'ditolak')
+            @if ($pengajuan['status'] == 'belum' || $pengajuan['status'] == 'tolak')
               <a href="/authgdrive/{{ $pengajuan['id'] }}"><button type="button" class="btn btn-outline-dark">UPLOAD</button></a>
             @endif
           </center>  
@@ -156,7 +162,7 @@
               </ul>
             @endif    
             <center class="mt-3">
-              @if ($pengajuan['status'] == 'belum' || $pengajuan['status'] == 'ditolak')
+              @if ($pengajuan['status'] == 'belum' || $pengajuan['status'] == 'tolak')
                 <a href="/pengajuan/detail/upload-lampiran/{{ $pengajuan['id'] }}"><button type="button" class="btn btn-outline-dark">UPLOAD</button></a>
               @endif
             </center>
@@ -164,16 +170,21 @@
         </div>
     </div>
   </div>
+  
+  @if ($pengajuan['status'] == 'belum' || $pengajuan['status'] == 'tolak')
+    <div class="row text-center mt-5 mb-4">
+      <div class="col-md-6">
+      <a href="/pengajuan"><button type="button" class="btn btn-outline-success col-6">SIMPAN</button></a>
+      </div>
+      @if (count($lampiran) != 0 && count($file_dkps) != 0 && count($file_ded) != 0 )
+        <div class="col-md-6">
+        <a href="/register-pengajuan/{{ $pengajuan['id'] }}"><button type="button" class="btn btn-outline-success col-6">MENGAJUKAN</button></a>
+        </div> 
+      @endif
 
-  <div class="row text-center mt-5 mb-4">
-    <div class="col-md-6">
-    <a href="#"><button type="button" class="btn btn-outline-success col-6">SIMPAN</button></a>
-    </div>
+    </div>     
+  @endif
 
-    <div class="col-md-6">
-    <a href="#"><button type="button" class="btn btn-outline-success col-6">MENGAJUKAN</button></a>
-    </div>
-  </div>
 
 
 @endsection

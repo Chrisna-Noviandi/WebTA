@@ -11,6 +11,9 @@
   <li class="nav-item">
     <a class="nav-link" href="/usermanagement"><i class="bi bi-people"></i> User Management</a>
   </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/pengajuan-admin"><i class="bi bi-people"></i>Daftar Pengajuan</a>
+  </li>
 @endsection
 
 @section('content')

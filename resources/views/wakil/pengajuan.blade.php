@@ -49,28 +49,29 @@
     @elseif ($datas['status'] == "penilaian")
       {{-- status Asesor 1 --}}
       @if ($datas['status_acesor1'] == "sudah")
-        <a href="/pengajuan/lihat-nilai/{{ $datas['id'] }}" class="btn btn-primary">Nilai Acesor 1</a>       
+        <a href="/pengajuan/lihat-nilai/{{ $datas['id'] }}/{{ $datas[id_acesor1] }}" class="btn btn-primary">Nilai Acesor 1</a>       
       @else
         <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Disabled popover">
           <button class="btn btn-lg btn-danger" type="button" disabled>Nilai Acesor 1</button>
         </span>  
       @endif
-      {{-- status Asesor 1 --}}
+      {{-- status Asesor 2 --}}
       @if ($datas['status_acesor2'] == "sudah")
-        <a href="/pengajuan/lihat-nilai/{{ $datas['id'] }}" class="btn btn-primary">Nilai Acesor 2</a>       
+        <a href="/pengajuan/lihat-nilai/{{ $datas['id'] }}/{{ $datas['id_acesor2'] }}" class="btn btn-primary">Nilai Acesor 2</a>       
       @else
         <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Disabled popover">
           <button class="btn btn-lg btn-danger" type="button" disabled>Nilai Acesor 2</button>
         </span>  
       @endif
+      <a href="/pengajuan/detail/{{ $datas['id'] }}" class="btn btn-primary">Detail Pengajuan</a>
 
-
-    @elseif ($datas['status'] == "ditolak")
+    @elseif ($datas['status'] == "tolak")
       <a href="/pengajuan/detail/{{ $datas['id'] }}" class="btn btn-primary">Edit Pengajuan</a>
 
     @else
     
     @endif
+    
   </div>
 </div>
 @endforeach

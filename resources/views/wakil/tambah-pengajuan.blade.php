@@ -18,7 +18,7 @@
 
 @section('content')
 
-<form class="row g-3 mt-5" action="/register-pengajuan" method="post" enctype="multipart/form-data">
+<form class="row g-3 mt-5" action="/register-buat-pengajuan" method="post" enctype="multipart/form-data">
   @csrf
   <div class="col-md-6">
     <label for="inputUsername" class="form-label">Program</label>

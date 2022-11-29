@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::create('penilaians', function (Blueprint $table) {
             $table->id();
-            $table->string('id_pengajuan')->unique();
+            $table->string('id_pengajuan');
+            $table->string('id_acesor');
             $table->text('nilai')->nullable();
             $table->text('f1')->nullable();
             $table->text('n1')->nullable();

@@ -30,15 +30,28 @@
   </div>
   <div class="card-body">
     <h5 class="card-title">{{  $datas['nama_program_studi'] }}</h5>
-    @if ($datas['status'] == "sudah")
-    <a href="/daftar-pengajuan-asesor/detail-penilaian/{{ $datas['id'] }}" class="btn btn-primary">Detail Nilai</a>    
-    @else
-      @if ($datas['status'] == "hampir")
-      <a href="/daftar-pengajuan-asesor/form-penilaian/{{ $datas['id'] }}" class="btn btn-primary">Lanjutkan Penilaian</a>       
+    @if ($datas['id_acesor1'] == auth()->user()->id)
+      @if ($datas['status_acesor1'] == "sudah")
+        <a href="/daftar-pengajuan-asesor/detail-penilaian/{{ $datas['id'] }}/{{ auth()->user()->id }}" class="btn btn-primary">Detail Nilai</a>    
       @else
-      <a href="/daftar-pengajuan-asesor/form-penilaian/{{ $datas['id'] }}" class="btn btn-primary">Nilai</a>
+        @if ($datas['status_acesor1'] == "hampir")
+        <a href="/daftar-pengajuan-asesor/form-penilaian/{{ $datas['id'] }}" class="btn btn-primary">Lanjutkan Penilaian</a>       
+        @else
+        <a href="/daftar-pengajuan-asesor/form-penilaian/{{ $datas['id'] }}/" class="btn btn-primary">Nilai</a>
+        @endif 
+      @endif        
+    @else
+      @if ($datas['status_acesor2'] == "sudah")
+        <a href="/daftar-pengajuan-asesor/detail-penilaian/{{ $datas['id'] }}/{{ auth()->user()->id }}" class="btn btn-primary">Detail Nilai</a>    
+      @else
+        @if ($datas['status_acesor2'] == "hampir")
+        <a href="/daftar-pengajuan-asesor/form-penilaian/{{ $datas['id'] }}" class="btn btn-primary">Lanjutkan Penilaian</a>       
+        @else
+        <a href="/daftar-pengajuan-asesor/form-penilaian/{{ $datas['id'] }}" class="btn btn-primary">Nilai</a>
+        @endif 
       @endif 
     @endif
+
     <a href="/daftar-pengajuan-asesor/detail-pengajuan/{{ $datas['id'] }}" class="btn btn-primary">Lihat Detail</a>
   </div>
 </div>

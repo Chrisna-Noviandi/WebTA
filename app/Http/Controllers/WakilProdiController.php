@@ -62,11 +62,11 @@ class WakilProdiController extends Controller
         }
     }
 
-    public function detailNilai($id_pengajuan)
+    public function detailNilai($id_pengajuan, $id_acesor)
     {
         $data = auth()->user()->type;
         if ($data == "Wakil Prodi") {
-            return view('wakil.lihat-nilai', ["data" => penilaian::where('id_pengajuan', $id_pengajuan)->get()]);
+            return view('wakil.lihat-nilai', ["data" => penilaian::where('id_pengajuan', $id_pengajuan)->where('id_acesor', $id_acesor)->get()]);
         } else {
             return redirect()->intended('/home');
         }
@@ -162,19 +162,8 @@ class WakilProdiController extends Controller
     }
 
 
-
-
-
-    public function ajukan(Request $request)
+    public function buatPengajuan(Request $request)
     {
-        // $client = new \Google\Client();
-        // $access_token = auth()->user()->access_token;
-        // $client->setAccessToken($access_token);
-        // $service = new \Google\Service\Drive($client);
-
-
-
-
 
         $data = $request->validate([
             'program' => 'required|min:3|max:255',
@@ -189,73 +178,21 @@ class WakilProdiController extends Controller
             'ts' => 'required|min:3|max:255',
             'nama_narahubung' => 'required|min:3|max:255',
             'telepon_seluler' => 'required|min:3|max:255',
-            // 'file_ded' => 'required|mimetypes:application/pdf',
-            // 'file_dkps' => 'required|mimetypes:application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
         ]);
 
-
-
-
-
-        $data += array('id_user' => auth()->user()->id);
-        $data += array('status' => 'belum');
+        $data += ['id_user' => auth()->user()->id];
+        $data += ['status' => 'belum'];
         pengajuan::create($data);
 
-        // $id_pengaju = $uploade->id;
-        // $file_ded = $request['file_ded'];
+
+        return redirect()->intended('/pengajuan');
+    }
 
 
-
-
-        // filePengajuan::create([
-        //     'id_pengajuan' => $id_pengaju,
-        //     'nama_file' => $file_ded->store('ded'),
-        //     'size' => $file_ded->getSize(),
-        //     'nama_asli_file' => $file_ded->getClientOriginalName(),
-        //     'lokasi' => $file_ded->store('ded'),
-        //     'tipe' => "ded",
-        // ]);
-
-
-
-        // $file_dkps = $request['file_dkps'];
-
-        // //upload google drive
-        // $namefile = new \Google\Service\Drive\DriveFile(array('name' => $file_dkps->getClientOriginalName()));
-        // $result = $service->files->create($namefile, array(
-
-        //     'data' => file_get_contents(public_path('storage/' . $file_dkps->store('dkps'))), // ADD YOUR FILE PATH WHICH YOU WANT TO UPLOAD ON GOOGLE DRIVE
-        //     'mimeType' => 'application/octet-stream',
-        //     'uploadType' => 'media'
-        // ));
-        // $url = $result->id;
-
-
-        // filePengajuan::create([
-        //     'id_pengajuan' => $id_pengaju,
-        //     'nama_file' => $url,
-        //     'size' => $file_dkps->getSize(),
-        //     'nama_asli_file' => $file_dkps->getClientOriginalName(),
-        //     'lokasi' => $file_dkps->store('dkps'),
-        //     'tipe' => "dkps",
-        // ]);
-
-
-        // $lampiran = $request['lampiran'];
-        // foreach ($lampiran as $file) {
-
-
-        //     filePengajuan::create([
-        //         'id_pengajuan' => $id_pengaju,
-        //         'nama_file' => $file->store('lampiran'),
-        //         'size' => $file->getSize(),
-        //         'nama_asli_file' => $file->getClientOriginalName(),
-        //         'lokasi' => $file->store('lampiran'),
-        //         'tipe' => "lampiran",
-        //     ]);
-        // }
-
-        // penilaian::create(['id_pengajuan' => $uploade->id]);
+    public function ajukan(Request $request, $id)
+    {
+        pengajuan::where('id', $id)
+            ->update(['status' => 'pengajuan']);
         return redirect()->intended('/pengajuan');
     }
     public function detailEdit($id)

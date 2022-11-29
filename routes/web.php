@@ -42,6 +42,16 @@ Route::get('/usermanagement/edit/{id}', [AdminController::class, 'edit'])->middl
 Route::post('/usermanagement/delete/{id}', [AdminController::class, 'delete'])->middleware('auth');
 Route::post('/usermanagement/update', [AdminController::class, 'update'])->middleware('auth');
 
+Route::get('/pengajuan-admin', [AdminController::class, 'pengajuan'])->middleware('auth');
+Route::get('/pengajuan-admin/detail/{id}', [AdminController::class, 'detail'])->middleware('auth');
+//menolak pengajuan
+Route::get('/tolak/{id}', [AdminController::class, 'tolak'])->middleware('auth');
+Route::post('/tolak/{id}', [AdminController::class, 'tolakSave'])->middleware('auth');
+//menerima pengajuan
+Route::get('/terima/{id}', [AdminController::class, 'terima'])->middleware('auth');
+Route::post('/terima/{id}', [AdminController::class, 'terimaSave'])->middleware('auth');
+//nilai
+Route::get('/pengajuan-admin/lihat-nilai/{id}/{id_acesor2}', [AdminController::class, 'nilai'])->middleware('auth');
 
 
 //Wakil Prodi
@@ -61,8 +71,9 @@ Route::get('/pengajuan/detail/upload-lampiran/{id}', [WakilProdiController::clas
 Route::post('/pengajuan/detail/upload-lampiran/{id}', [WakilProdiController::class, 'uploadLampiranSave'])->middleware('auth');
 
 Route::get('/pengajuan/tambah-pengajuan', [WakilProdiController::class, 'tambah'])->middleware('auth');
-Route::get('/pengajuan/lihat-nilai/{id}', [WakilProdiController::class, 'detailNilai'])->middleware('auth');
-Route::post('/register-pengajuan', [WakilProdiController::class, 'ajukan']);
+Route::get('/pengajuan/lihat-nilai/{id1}/{id2}', [WakilProdiController::class, 'detailNilai'])->middleware('auth');
+Route::post('/register-buat-pengajuan', [WakilProdiController::class, 'buatPengajuan']);
+Route::get('/register-pengajuan/{id}', [WakilProdiController::class, 'ajukan']);
 
 
 
@@ -71,7 +82,7 @@ Route::post('/register-pengajuan', [WakilProdiController::class, 'ajukan']);
 Route::get('/home-asesor', [AsesorController::class, 'home'])->middleware('auth');
 Route::get('/daftar-pengajuan-asesor', [AsesorController::class, 'daftarPengajuan'])->middleware('auth');
 Route::get('/daftar-pengajuan-asesor/form-penilaian/{id_pengajuan}', [AsesorController::class, 'formPenilaian'])->middleware('auth');
-Route::get('/daftar-pengajuan-asesor/detail-penilaian/{id_pengajuan}', [AsesorController::class, 'detailPenilaian'])->middleware('auth');
+Route::get('/daftar-pengajuan-asesor/detail-penilaian/{id_pengajuan}/{id_acesor}', [AsesorController::class, 'detailPenilaian'])->middleware('auth');
 Route::get('/daftar-pengajuan-asesor/detail-pengajuan/{id_pengajuan}', [AsesorController::class, 'detailPengajuan'])->middleware('auth');
 Route::get('/daftar-pengajuan-asesor/detail-pengajuan/download/{id}', [AsesorController::class, 'download'])->middleware('auth');
 Route::post('/daftar-pengajuan-asesor/form-penilaian', [AsesorController::class, 'nilaiMasuk']);
