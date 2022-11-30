@@ -6,6 +6,7 @@ use App\Models\filePengajuan;
 use App\Models\User;
 use App\Models\pengajuan;
 use App\Models\penilaian;
+use App\Models\led;
 use Faker\Core\File;
 use Illuminate\Http\Request;
 use Google\Client;
@@ -182,7 +183,13 @@ class WakilProdiController extends Controller
 
         $data += ['id_user' => auth()->user()->id];
         $data += ['status' => 'belum'];
-        pengajuan::create($data);
+        $id_pengajuan = pengajuan::create($data);
+        $id_led = substr(base_convert(sha1(uniqid(mt_rand())), 16, 36), 0, 40);;
+
+        led::create([
+            'id_pengajuan' => $id_pengajuan->id,
+            'id_led' => $id_led,
+        ]);
 
 
         return redirect()->intended('/pengajuan');

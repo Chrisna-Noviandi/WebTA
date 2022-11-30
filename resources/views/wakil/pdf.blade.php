@@ -11,9 +11,12 @@
 
 </head>
 
+@foreach ($led as $data)
+    
+
 
 <body>
-  <img class="mb-5 " src="E:\Kuliah\Projek PPM\WebSimulasiAkredetasiBAN-PT\public\image\logo.png" alt="" width="600" height="250">
+  {{-- <img class="mb-5 " src="E:\Kuliah\Projek PPM\WebSimulasiAkredetasiBAN-PT\public\image\logo.png" alt="" width="600" height="250"> --}}
     <ol class="mt-5" style="font-family: Arial, Helvetica, sans-serif; font-size: 11pt;  line-height: 115%" type="A">
         <li class="mt-3" style="font-weight: bold" >Kondisi Eksternal</li>
           <p style="text-align: justify;"> 
@@ -125,6 +128,7 @@
       </ol> 
 
       <script src={{ asset('ckeditor/build/ckeditor.js') }}></script>
+      @endforeach
 </body>
 </html>
 

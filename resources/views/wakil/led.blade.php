@@ -17,8 +17,10 @@
 @endsection
 
 @section('content')
+@foreach ($led as $data)
+    
 
-  <form action="/laporan-evaluasi-diri/save" method="post" >
+  <form action="/laporan-evaluasi-diri/save/{{ $data['id_pengajuan'] }}" method="post" >
     @csrf
     <ol class="mt-5" style="font-family: Arial, Helvetica, sans-serif; font-size: 16px;" type="A">
       <b><li class="mt-3"> Kondisi Eksternal</li></b>
@@ -39,7 +41,7 @@
           pengembangan alternatif yang tepat, yang dijabarkan lebih rinci pada Bagian
           Kedua huruf D.
         </p>
-        <textarea class="form-control mt-5" placeholder="Leave a comment here" id="ckeditor1" name="a1"></textarea>
+        <textarea class="form-control mt-5" placeholder="Leave a comment here" id="ckeditor1" name="a1" >{!! $data['a1'] !!}</textarea>
       <b><li class="mt-3">Profil Unit Pengelola Program Studi</li></b>
         <p style="text-align: justify;"> 
           Bagian ini berisi deskripsi sejarah Unit Pengelola Program Studi (UPPS), visi,
@@ -57,14 +59,14 @@
               perkembangan UPPS dan program studi yang diakreditasi secara ringkas
               dan jelas.             
             </p>
-            <textarea class="form-control mt-5" placeholder="Leave a comment here" id="ckeditor2" name="b1"></textarea>
+            <textarea class="form-control mt-5" placeholder="Leave a comment here" id="ckeditor2" name="b1">{!! $data['b1'] !!}</textarea>
           <b><li class="mt-3">Visi, Misi, Tujuan, Strategi, dan Tata Nilai</li></b>
             <p style="text-align: justify;"> 
               Bagian ini berisi deskripsi singkat visi, misi, tujuan, strategi dan tata nilai
               yang diterapkan di UPPS dan program studi (visi keilmuan/scientific
               vision)                
             </p>
-            <textarea class="form-control mt-5" placeholder="Leave a comment here" id="ckeditor3" name="b2"></textarea>
+            <textarea class="form-control mt-5" placeholder="Leave a comment here" id="ckeditor3" name="b2">{!! $data['b2'] !!}</textarea>
           <b><li class="mt-3">Organisasi dan Tata Kerja </li></b>
             <p style="text-align: justify;"> 
               Bagian ini berisi informasi dokumen formal organisasi dan tata kerja yang
@@ -72,28 +74,28 @@
               struktur organisasi dan tata kerja UPPS dan program studi, tugas pokok,
               dan fungsinya (tupoksi).                              
             </p>
-            <textarea class="form-control mt-5" placeholder="Leave a comment here" id="ckeditor4" name="b3"></textarea>
+            <textarea class="form-control mt-5" placeholder="Leave a comment here" id="ckeditor4" name="b3">{!! $data['b3'] !!}</textarea>
           <b><li class="mt-3">Mahasiswa dan Lulusan</li></b>
             <p style="text-align: justify;"> 
               Bagian ini berisi deskripsi ringkas data jumlah mahasiswa dan lulusan,
               termasuk kualitas masukan, prestasi monumental yang dicapai mahasiswa
               dan lulusan, serta kinerja lulusan.                
             </p>
-            <textarea class="form-control mt-5" placeholder="Leave a comment here" id="ckeditor5" name="b4"></textarea>
+            <textarea class="form-control mt-5" placeholder="Leave a comment here" id="ckeditor5" name="b4">{!! $data['b4'] !!}</textarea>
           <b><li class="mt-3">Dosen dan Tenaga Kependidikan</li></b>
             <p style="text-align: justify;"> 
               Bagian ini berisi informasi ringkas jumlah dan kualifikasi SDM (dosen dan
               tenaga kependidikan), kecukupan dan kinerja, serta prestasi monumental
               yang dicapa              
             </p>
-            <textarea class="form-control mt-5" placeholder="Leave a comment here" id="ckeditor6" name="b5"></textarea>
+            <textarea class="form-control mt-5" placeholder="Leave a comment here" id="ckeditor6" name="b5">{!! $data['b5'] !!}</textarea>
           <b><li class="mt-3">Keuangan, Sarana, dan Prasarana
           </li></b>
             <p style="text-align: justify;"> 
               Berisi deskripsi ringkas kecukupan, kelayakan, kualitas, dan aksesibilitas
               sumberdaya keuangan, sarana dan prasarana.                
             </p>
-            <textarea class="form-control mt-5" placeholder="Leave a comment here" id="ckeditor7" name="b6"></textarea>
+            <textarea class="form-control mt-5" placeholder="Leave a comment here" id="ckeditor7" name="b6">{!! $data['b6'] !!}</textarea>
           <b><li class="mt-3">Sistem Penjaminan Mutu</li></b>
             <p style="text-align: justify;"> 
               Berisi deskripsi implementasi Sistem Penjaminan Mutu yang sesuai
@@ -103,13 +105,13 @@
               oleh UPPS dan program studi, termasuk pengakuan mutu dari lembaga
               audit eksternal, lembaga akreditasi, dan lembaga sertifikasi.                
             </p>
-            <textarea class="form-control mt-5" placeholder="Leave a comment here" id="ckeditor8" name="b7"></textarea>
+            <textarea class="form-control mt-5" placeholder="Leave a comment here" id="ckeditor8" name="b7">{!! $data['b7'] !!}</textarea>
           <b><li class="mt-3">Kinerja Unit Pengelola Program Studi</li></b>
             <p style="text-align: justify;"> 
               Berisi deskripsi luaran dan capaian yang paling diunggulkan dari UPPS
               dan program studi yang diakreditasi.                
             </p>
-            <textarea class="form-control mt-5" placeholder="Leave a comment here" id="ckeditor9" name="b8"></textarea>
+            <textarea class="form-control mt-5" placeholder="Leave a comment here" id="ckeditor9" name="b8">{!! $data['b8'] !!}</textarea>
         </ol>
       <b><li class="mt-3">Kriteria</li></b>
       <p style="text-align: justify;"> 
@@ -147,7 +149,7 @@
             mencerminkan visi perguruan tinggi dan memayungi visi keilmuan
             program studi yang diakreditasi, serta rencana strategisnya.                       
           </p>
-          <textarea class="form-control mt-5" placeholder="Leave a comment here" id="ckeditor10" name="c1"></textarea>
+          <textarea class="form-control mt-5" placeholder="Leave a comment here" id="ckeditor10" name="c1">{!! $data['c1'] !!}</textarea>
         <b><li class="mt-3">Tata Kelola, Tata Pamong, dan Kerjasama</li></b>
           <p style="text-align: justify;"> 
             Bagian ini mencakup latar belakang, tujuan, dan rasional penentuan
@@ -164,7 +166,7 @@
             baik (good governance), sistem pengelolaan, sistem penjaminan mutu,
             dan kerjasama di UPPS dan program studi yang diakreditasi.                       
           </p>
-          <textarea class="form-control mt-5" placeholder="Leave a comment here" id="ckeditor11" name="c2"></textarea>
+          <textarea class="form-control mt-5" placeholder="Leave a comment here" id="ckeditor11" name="c2">{!! $data['c2'] !!}</textarea>
         <b><li class="mt-3">Mahasiswa</li></b>
           <p style="text-align: justify;"> 
             Bagian ini mencakup latar belakang, tujuan, dan rasional penentuan
@@ -175,7 +177,7 @@
             dan karakteristik proses pembelajaran di program studi yang
             diakreditasi.                       
           </p>
-          <textarea class="form-control mt-5" placeholder="Leave a comment here" id="ckeditor12" name="c3"></textarea>
+          <textarea class="form-control mt-5" placeholder="Leave a comment here" id="ckeditor12" name="c3">{!! $data['c3'] !!}</textarea>
         <b><li class="mt-3">Sumber Daya Manusia</li></b>
           <p style="text-align: justify;"> 
             Bagian ini mencakup latar belakang, tujuan, dan rasional penentuan
@@ -186,7 +188,7 @@
             dan PkM), pengembangan dosen, tenaga kependidikan, serta
             pengelolaan SDM (dosen dan tenaga kependidikan).
           </p>
-          <textarea class="form-control mt-5" placeholder="Leave a comment here" id="ckeditor13" name="c4"></textarea>
+          <textarea class="form-control mt-5" placeholder="Leave a comment here" id="ckeditor13" name="c4">{!! $data['c4'] !!}</textarea>
         <b><li class="mt-3">Keuangan, Sarana, dan Prasarana</li></b>
           <p style="text-align: justify;"> 
             Bagian ini mencakup latar belakang, tujuan, dan rasional penentuan
@@ -205,7 +207,7 @@
               </li>
             </ol>                      
           </p>
-          <textarea class="form-control mt-5" placeholder="Leave a comment here" id="ckeditor14" name="c5"></textarea>
+          <textarea class="form-control mt-5" placeholder="Leave a comment here" id="ckeditor14" name="c5">{!! $data['c5'] !!}</textarea>
         <b><li class="mt-3">Pendidikan</b>
           <p style="text-align: justify;"> 
             Bagian ini mencakup latar belakang, tujuan, dan rasional penentuan
@@ -218,7 +220,7 @@
             akademik yang didasarkan atas faktor internal dan eksternal pada
             program studi yang diakreditasi.                                   
           </p>
-          <textarea class="form-control mt-5" placeholder="Leave a comment here" id="ckeditor15" name="c6"></textarea>
+          <textarea class="form-control mt-5" placeholder="Leave a comment here" id="ckeditor15" name="c6">{!! $data['c6'] !!}</textarea>
         <b><li class="mt-3">Penelitian</li></b>
           <p style="text-align: justify;"> 
             Bagian ini mencakup latar belakang, tujuan, dan rasional penentuan
@@ -228,7 +230,7 @@
             atas faktor internal dan eksternal pada bidang keilmuan program studi
             yang diakreditasi.                      
           </p>
-          <textarea class="form-control mt-5" placeholder="Leave a comment here" id="ckeditor16" name="c7"></textarea>
+          <textarea class="form-control mt-5" placeholder="Leave a comment here" id="ckeditor16" name="c7">{!! $data['c7'] !!}</textarea>
         <b><li class="mt-3">Pengabdian kepada Masyarakat</li></b>
           <p style="text-align: justify;"> 
             Bagian ini mencakup latar belakang, tujuan, dan rasional penentuan
@@ -238,7 +240,7 @@
             PkM yang didasarkan atas faktor internal dan eksternal pada bidang
             keilmuan program studi yang diakreditasi.                      
           </p>
-          <textarea class="form-control mt-5" placeholder="Leave a comment here" id="ckeditor17" name="c8"></textarea>
+          <textarea class="form-control mt-5" placeholder="Leave a comment here" id="ckeditor17" name="c8">{!! $data['c8'] !!}</textarea>
         <b><li class="mt-3">Luaran dan Capaian Tridharma</li></b>
           <p style="text-align: justify;"> 
             Bagian ini mencakup latar belakang, tujuan, dan rasional penentuan
@@ -248,7 +250,7 @@
             PkM yang didasarkan atas faktor internal dan eksternal pada bidang
             keilmuan program studi yang diakreditasi.                       
           </p>
-          <textarea class="form-control mt-5" placeholder="Leave a comment here" id="ckeditor18" name="c9"></textarea>
+          <textarea class="form-control mt-5" placeholder="Leave a comment here" id="ckeditor18" name="c9">{!! $data['c9'] !!}</textarea>
       </ol>
       <b><li class="mt-3">
         ANALISIS DAN PENETAPAN PROGRAM PENGEMBANGAN UNIT
@@ -264,7 +266,7 @@
             andal dan memadai serta konsisten dengan hasil analisis yang
             disampaikan pada setiap kriteria di atas.          
           </p>
-          <textarea class="form-control mt-5" placeholder="Leave a comment here" id="ckeditor19" name="d1"></textarea>
+          <textarea class="form-control mt-5" placeholder="Leave a comment here" id="ckeditor19" name="d1">{!! $data['d1'] !!}</textarea>
         <b><li class="mt-3">Analisis SWOT atau Analisis Lain yang Relevan</li></b>
           <p style="text-align: justify">
             Ketepatan mengidentifikasi kekuatan atau faktor pendorong, kelemahan
@@ -274,7 +276,7 @@
             diakreditasi, serta menjadi dasar untuk mendapatkan alternatif solusi dan
             menetapkan program pengembangan.          
           </p>
-          <textarea class="form-control mt-5" placeholder="Leave a comment here" id="ckeditor20" name="d2"></textarea>
+          <textarea class="form-control mt-5" placeholder="Leave a comment here" id="ckeditor20" name="d2">{!! $data['d2'] !!}</textarea>
         <b><li class="mt-3"></li></b>
           <p style="text-align: justify">
             Kemampuan UPPS dalam menetapkan strategi dan program
@@ -282,7 +284,7 @@
             dan VMT UPPS secara keseluruhan, terutama pengembangan program
             studi yang diakreditasi.          
           </p>
-          <textarea class="form-control mt-5" placeholder="Leave a comment here" id="ckeditor21" name="d3"></textarea>
+          <textarea class="form-control mt-5" placeholder="Leave a comment here" id="ckeditor21" name="d3">{!! $data['d3'] !!}</textarea>
         <b><li class="mt-3">Program Keberlanjutan </li></b>
           <p style="text-align: justify">
             Mekanisme penjaminan keberlangsungan program pengembangan dan
@@ -290,21 +292,21 @@
             untuk mendukung pelaksanaan program termasuk rencana penjaminan
             mutu yang berkelanjutan.          
           </p>
-          <textarea class="form-control mt-5" placeholder="Leave a comment here" id="ckeditor22" name="d4"></textarea>
+          <textarea class="form-control mt-5" placeholder="Leave a comment here" id="ckeditor22" name="d4">{!! $data['d4'] !!}</textarea>
       </ol>
       <b><li class="mt-3">PENUTUP</li></b>
       <p style="text-align: justify">
         Bagian ini berisi deskripsi yang memuat kesimpulan akhir dari Laporan Evaluasi
         Diri.      
       </p>
-      <textarea class="form-control mt-5" placeholder="Leave a comment here" id="ckeditor23" name="e1"></textarea>
+      <textarea class="form-control mt-5" placeholder="Leave a comment here" id="ckeditor23" name="e1">{!! $data['e1'] !!}</textarea>
     </ol>
     
     <div class="d-grid gap-2">
-      <button type="submit" class="btn btn-outline-dark btn-lg mt-5 mb-5">Make PDF</button>
+      <button type="submit" class="btn btn-outline-dark btn-lg mt-5 mb-5">Simpan Laporan</button>
     </div>
   </form>
-
+@endforeach
 
 
   <script src={{ asset('ckeditor/build/ckeditor.js') }}></script>

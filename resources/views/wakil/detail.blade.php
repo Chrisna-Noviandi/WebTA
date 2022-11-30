@@ -99,6 +99,16 @@
       </div>
     </div>
 </center>
+<center>
+  <div class="row text-center mt-5 mb-4">
+    <div class="col-md-6" style="text-align: right">
+    <a href="/laporan-evaluasi-diri/download/{{ $pengajuan['id'] }}"><button type="button" class="btn btn-outline-dark col-6">Download Laporan Evaluasi Diri</button></a>
+    </div>
+    <div class="col-md-6" style="text-align: left">
+    <a href="/laporan-evaluasi-diri/{{ $pengajuan['id'] }}"><button type="button" class="btn btn-outline-dark col-6">Isi Laporan Evaluasi Diri</button></a>
+    </div> 
+  </div>
+</center>
 
   <div class="row mt-4">
 

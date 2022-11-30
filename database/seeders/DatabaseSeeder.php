@@ -51,6 +51,24 @@ class DatabaseSeeder extends Seeder
             'status' => 'new',
 
         ]);
+
+        User::create([
+            'name' => 'Christian Alexsande',
+            'username' => '31119004',
+            'password' => bcrypt(123456),
+            'type' => 'Acesor',
+            'status' => 'new',
+
+        ]);
+
+        User::create([
+            'name' => 'Budi Pengerti',
+            'username' => '31119005',
+            'password' => bcrypt(123456),
+            'type' => 'Acesor',
+            'status' => 'new',
+
+        ]);
         // \App\Models\User::factory(10)->create();
 
         // \App\Models\User::factory()->create([

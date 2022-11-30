@@ -87,8 +87,9 @@ Route::get('/daftar-pengajuan-asesor/detail-pengajuan/{id_pengajuan}', [AsesorCo
 Route::get('/daftar-pengajuan-asesor/detail-pengajuan/download/{id}', [AsesorController::class, 'download'])->middleware('auth');
 Route::post('/daftar-pengajuan-asesor/form-penilaian', [AsesorController::class, 'nilaiMasuk']);
 //Laporan Evaluasi Diri
-Route::get('/laporan-evaluasi-diri', [LEDController::class, 'index']);
-Route::post('/laporan-evaluasi-diri/save', [LEDController::class, 'save']);
+Route::get('/laporan-evaluasi-diri/{id_pengajuan}', [LEDController::class, 'index']);
+Route::post('/laporan-evaluasi-diri/save/{id}', [LEDController::class, 'save']);
+Route::get('/laporan-evaluasi-diri/download/{id}', [LEDController::class, 'download']);
 
 
 
