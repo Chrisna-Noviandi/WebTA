@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\filePengajuan;
 use App\Models\pengajuan;
 use App\Models\penilaian;
+use Google\Service\CloudSearch\Id;
 use Illuminate\Http\Request;
 
 class PemimpinController extends Controller
@@ -57,11 +58,11 @@ class PemimpinController extends Controller
             return redirect()->intended('/home');
         }
     }
-    public function detailNilai($id_pengajuan)
+    public function detailNilai($id_pengajuan, $id_asesor)
     {
         $data = auth()->user()->type;
         if ($data == "Pemimpin") {
-            return view('pemimpin.lihat-nilai', ["data" => penilaian::where('id_pengajuan', $id_pengajuan)->get()]);
+            return view('pemimpin.lihat-nilai', ["data" => penilaian::where('id_pengajuan', $id_pengajuan)->where('id_acesor', $id_asesor)->get()]);
         } else {
             return redirect()->intended('/home');
         }

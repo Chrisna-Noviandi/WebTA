@@ -41,15 +41,18 @@
     <h5 class="card-title">{{  $datas['nama_program_studi'] }}</h5>
 
     @if ($datas['status'] == "belum")
+      <h5 class="card-title">Status : Masih Melengkapi data</h5>
       <a href="/pengajuan/detail/{{ $datas['id'] }}" class="btn btn-primary">Lengkapi Pengajuan</a>
 
     @elseif ($datas['status'] == "pengajuan")
+    <h5 class="card-title">Status : Menunggu Validasi Admin</h5>
       <a href="/pengajuan/detail/{{ $datas['id'] }}" class="btn btn-primary">Detail Pengajuan</a>
       
     @elseif ($datas['status'] == "penilaian")
+      <h5 class="card-title">Status : Berhasil Melakukan Pengajuan</h5>
       {{-- status Asesor 1 --}}
       @if ($datas['status_acesor1'] == "sudah")
-        <a href="/pengajuan/lihat-nilai/{{ $datas['id'] }}/{{ $datas[id_acesor1] }}" class="btn btn-primary">Nilai Acesor 1</a>       
+        <a href="/pengajuan/lihat-nilai/{{ $datas['id'] }}/{{ $datas['id_acesor1'] }}" class="btn btn-primary">Nilai Acesor 1</a>       
       @else
         <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Disabled popover">
           <button class="btn btn-lg btn-danger" type="button" disabled>Nilai Acesor 1</button>
@@ -66,6 +69,7 @@
       <a href="/pengajuan/detail/{{ $datas['id'] }}" class="btn btn-primary">Detail Pengajuan</a>
 
     @elseif ($datas['status'] == "tolak")
+      <h5 class="card-title">Status : Pengajuan ditolak oleh Admin</h5>
       <a href="/pengajuan/detail/{{ $datas['id'] }}" class="btn btn-primary">Edit Pengajuan</a>
 
     @else

@@ -25,6 +25,11 @@ use Illuminate\Support\ServiceProvider;
 |
 */
 
+Route::get('/laporan-evaluasi-diri/share/{id_led}', [LEDController::class, 'share']);
+Route::post('/laporan-evaluasi-diri/share/save/{id_led}', [LEDController::class, 'saveShare']);
+
+
+
 Route::get('/', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);
@@ -98,7 +103,7 @@ Route::get('/home-pemimpin', [PemimpinController::class, 'home'])->middleware('a
 Route::get('/daftar-pengajuan-pemimpin', [PemimpinController::class, 'daftar'])->middleware('auth');
 Route::get('/daftar-pengajuan-pemimpin/detail-pengajuan/{id}', [PemimpinController::class, 'detail'])->middleware('auth');
 Route::get('/daftar-pengajuan-pemimpin/detail-pengajuan/download/{id}', [PemimpinController::class, 'download'])->middleware('auth');
-Route::get('/daftar-pengajuan-pemimpin/lihat-nilai/{id}', [PemimpinController::class, 'detailNilai'])->middleware('auth');
+Route::get('/daftar-pengajuan-pemimpin/lihat-nilai/{id}/{id_asesor}', [PemimpinController::class, 'detailNilai'])->middleware('auth');
 
 //Profile admin
 Route::get('/profile', [ProfileController::class, 'show'])->middleware('auth');

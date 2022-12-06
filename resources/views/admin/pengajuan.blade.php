@@ -38,7 +38,7 @@
 
     
         @if ($datas['status'] == "pengajuan")
-            <a href="/pengajuan-asesor/detail/{{ $datas['id'] }}" class="btn btn-primary">Detail Pengajuan</a>
+            <a href="/pengajuan-admin/detail/{{ $datas['id'] }}" class="btn btn-primary">Detail Pengajuan</a>
             
         @elseif ($datas['status'] == "penilaian")
             {{-- status Asesor 1 --}}

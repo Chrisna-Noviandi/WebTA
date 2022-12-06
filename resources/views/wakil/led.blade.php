@@ -18,7 +18,14 @@
 
 @section('content')
 @foreach ($led as $data)
-    
+  <center>
+    <h3 class="mt-3">Laporan Evaluasi Diri</h3>
+  </center>
+    <!-- The text field -->
+    <input class="form-control" id="myInput" type="text" value="/laporan-evaluasi-diri/share/{{ $data['id_led'] }}" disabled>
+
+  <!-- The button used to copy the text -->
+  <button onclick="copy()">Copy text</button>
 
   <form action="/laporan-evaluasi-diri/save/{{ $data['id_pengajuan'] }}" method="post" >
     @csrf
@@ -320,6 +327,21 @@
         } );
   </script>
 @endfor
+
+<script>
+  function copy() {
+  // Get the text field
+  var copyText = document.getElementById("myInput");
+
+  // Select the text field
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); // For mobile devices
+
+   // Copy the text inside the text field
+  navigator.clipboard.writeText(copyText.value);
+
+}
+</script>
 
 
 @endsection
