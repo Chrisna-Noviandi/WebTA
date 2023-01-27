@@ -22,8 +22,9 @@
 
         <div class="col-12 mb-3">
             <label for="formFileMultiple" class="form-label">File DED</label>
-            <input class="form-control @error('file_ded') is-invalid @enderror" type="file" id="formFileMultiple" name="file_ded"
-            >
+            <center><p style="color:red; font-size: 10pt;">Format file yang didukung .pdf, .doc, .docx dan batas file yang bisa di upload 1  </p></center>
+
+            <input class="form-control @error('file_ded') is-invalid @enderror" type="file" id="formFileMultiple" name="file_ded" accept=".pdf, .doc, .docx">
             @error("file_ded")
             <div class="invalid-feedback">
             {{ $message }}

@@ -40,9 +40,6 @@ https://templatemo.com/tm-536-dream-pulse
           <li class="nav-item">
             <a class="nav-link" href="/pengajuan"><i class="bi bi-people"></i> Daftar Pegajuan</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link " href="/laporan-evaluasi-diri"><i class="bi bi-people"></i>LED</a>
-          </li>
         </ul>
 
         <ul class="navbar-nav ms-auto">

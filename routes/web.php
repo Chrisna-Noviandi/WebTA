@@ -44,6 +44,7 @@ Route::get('/usermanagement', [AdminController::class, 'user_management'])->midd
 
 
 Route::get('/usermanagement/edit/{id}', [AdminController::class, 'edit'])->middleware('auth');
+Route::post('/usermanagement/resetpassword', [AdminController::class, 'resetPassword'])->middleware('auth');
 Route::post('/usermanagement/delete/{id}', [AdminController::class, 'delete'])->middleware('auth');
 Route::post('/usermanagement/update', [AdminController::class, 'update'])->middleware('auth');
 
@@ -66,7 +67,8 @@ Route::get('/pengajuan/detail/{id}', [WakilProdiController::class, 'detail'])->m
 Route::get('/pengajuan/detail/edit/{id}', [WakilProdiController::class, 'detailEdit'])->middleware('auth');
 Route::post('/pengajuan/detail/edit/{id}', [WakilProdiController::class, 'detailEditSave'])->middleware('auth');
 Route::get('/pengajuan/detail/download/{id}', [WakilProdiController::class, 'download'])->middleware('auth');
-
+Route::get('/download/dkps', [WakilProdiController::class, 'downloadDKPS'])->middleware('auth');
+Route::get('/detail-perolehan-nilai/{id_penilaian}', [WakilProdiController::class, 'detailPerolehanNilai'])->middleware('auth');
 // upload file
 Route::get('/pengajuan/detail/upload-ded/{id}', [WakilProdiController::class, 'uploadDED'])->middleware('auth');
 Route::post('/pengajuan/detail/upload-ded/{id}', [WakilProdiController::class, 'uploadDEDSave'])->middleware('auth');

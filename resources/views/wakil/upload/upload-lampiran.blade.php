@@ -22,6 +22,8 @@
 
         <div class="col-12 mb-3">
             <label for="formFileMultiple" class="form-label">Lampiran</label>
+            <center><p style="color:red; font-size: 10pt;">Format file yang didukung .xlsx, .xls, .doc, .docx, .png, .jpg dan dan batas file yang bisa di lebih dari 1 serta file yang wajib yaitu: izin pendirian ps, surat pengantar dari pimpinan, dan surat pernyataan </p></center>
+
             <input class="form-control" type="file" id="formFileMultiple" name="lampiran[]" multiple>
             @error("lampiran")
             <div class="invalid-feedback">

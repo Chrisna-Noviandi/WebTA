@@ -22,7 +22,9 @@
 
         <div class="mb-3">
             <label for="formFileMultiple" class="form-label">File DKPS</label>
-            <input class="form-control @error('file_dkps') is-invalid @enderror" type="file" id="formFileMultiple" name="file_dkps" >
+            <center><p style="color:red; font-size: 10pt;">Format file yang didukung .xlsx, .xls dan dan batas file yang bisa di upload 1 </p></center>
+
+            <input class="form-control @error('file_dkps') is-invalid @enderror" type="file" id="formFileMultiple" name="file_dkps" accept=".xls, .xlsx" >
             @error("file_dkps")
             <div class="invalid-feedback">
               {{ $message }}

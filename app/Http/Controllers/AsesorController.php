@@ -7,6 +7,7 @@ use App\Models\pengajuan;
 use App\Models\penilaian;
 use Illuminate\Http\Request;
 
+
 class AsesorController extends Controller
 {
 
@@ -34,6 +35,7 @@ class AsesorController extends Controller
     {
         $data = auth()->user()->type;
         if ($data == "Acesor") {
+
             return view('asesor.multiform', [
                 "penilaian" => penilaian::where('id_pengajuan', $id_pengajuan)->where('id_acesor', auth()->user()->id)->get(),
                 "file_ded" => filePengajuan::where('id_pengajuan', $id_pengajuan)->where('tipe', 'ded')->get(),

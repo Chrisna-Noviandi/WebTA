@@ -12,17 +12,35 @@
   <li class="nav-item">
     <a class="nav-link active" href="/pengajuan"><i class="bi bi-people"></i> Daftar Pegajuan</a>
   </li>
-  <li class="nav-item">
-    <a class="nav-link " href="/laporan-evaluasi-diri"><i class="bi bi-people"></i>LED</a>
-  </li>
 @endsection
 
 @section('content')
+@php
+    function danger(int $a){
+        if ($a <= 2.5 && $a >= 2) {
+            $b = 'class="table-warning"';
+            return $b;
+        }elseif ($a < 2) {
+            $b = 'class="table-danger"';
+            return $b;
+        }else {
+            $b = 'class="table-success"';
+            return $b;
+        }
+    }    
+@endphp
+
 @foreach ($data as $d)
     
 <h1 class="mt-5">Nilai Akredetasi :<span class="badge bg-dark">{{ $d['nilai'] }}</span></h1>
 
-<table class="table mt-5">
+<center>
+    <div class="col-md-4">
+        <a href="/detail-perolehan-nilai/{{ $d['id'] }}"><button type="button" class="btn btn-outline-dark col-6">Detail Perolehan Nilai</button></a>
+    </div>
+</center>
+
+<table class="table mt-3">
     <thead>
       <tr>
         <th scope="col">No</th>
@@ -33,7 +51,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
+      <tr {!! danger($d['n1']) !!}>
         <th scope="row">1</th>
         <th scope="row">A. Kondisi Eksternal</th>
         <td>
@@ -46,7 +64,7 @@
             {{ $d['n1'] }}
         </td>
       </tr>
-      <tr>
+      <tr {!! danger($d['n2']) !!}>
         <th scope="row">2</th>
         <th scope="row">B. Profil Unit Pengelola Program Studi</th>
         <td>
@@ -59,7 +77,7 @@
             {{ $d['n2'] }}
         </td>
       </tr>
-      <tr>
+      <tr {!! danger($d['n3']) !!}>
         <th scope="row">3</th>
         <th scope="row"> C. Kriteria <br> C.1. Visi, Misi, Tujuan dan Strategi <br> C.1.4. Indikator Kinerja Utama</th>
         <td>
@@ -72,7 +90,7 @@
             {{ $d['n3'] }}
         </td>
       </tr>
-      <tr>
+      <tr {!! danger($d['n4']) !!}>
         <th scope="row">4</th>
         <th scope="row"></th>
         <td>
@@ -85,7 +103,7 @@
             {{ $d['n4'] }}
         </td>
       </tr>
-      <tr>
+      <tr {!! danger($d['n5']) !!}>
         <th scope="row">5</th>
         <th scope="row"></th>
         <td>
@@ -98,7 +116,7 @@
             {{ $d['n5'] }}
         </td>
       </tr>
-      <tr>
+      <tr {!! danger($d['n6']) !!}>
         <th scope="row">6</th>
         <th scope="row"> C.2. Tata Pamong, Tata Kelola dan Kerjasama
             <br> C.2.4. Indikator Kinerja Utama
@@ -116,7 +134,7 @@
             {{ $d['n6'] }}
         </td>
       </tr>
-    <tr>
+    <tr {!! danger($d['n7']) !!}>
       <th scope="row">7</th>
       <th scope="row"> C.2.4.b) Kepemimpinan dan Kemampuan Manajerial</th>
       <td>
@@ -131,7 +149,7 @@
         {{ $d['n7'] }}
     </td>
     </tr>
-    <tr>
+    <tr {!! danger($d['n8']) !!}>
         <th scope="row">8</th>
         <th scope="row">  C.2.4.c) Kerjasama</th>
         <td>
@@ -144,7 +162,7 @@
             {{ $d['n8'] }}
         </td>
     </tr>
-    <tr>
+    <tr {!! danger($d['n9']) !!}>
         <th scope="row">9</th>
         <th scope="row"></th>
         <td>  
@@ -160,7 +178,7 @@
         </td>
     </tr>
         
-    <tr>
+    <tr {!! danger($d['n10']) !!}>
         <th scope="row">10</th>
         <th scope="row"> C.2.5 Indikator Kinerja Tambahan</th>
         <td>
@@ -173,7 +191,7 @@
             {{ $d['n10'] }}
         </td>
     </tr>
-    <tr>
+    <tr {!! danger($d['n11']) !!}>
         <th scope="row">11</th>
         <th scope="row"> C.2.6 Evaluasi Capaian Kinerja
             </th>

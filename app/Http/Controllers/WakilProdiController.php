@@ -73,6 +73,38 @@ class WakilProdiController extends Controller
         }
     }
 
+    public function detailPerolehanNilai($id)
+    {
+        $data = auth()->user()->type;
+        if ($data == "Wakil Prodi") {
+
+            $n = penilaian::find($id);
+
+
+            $a1 = $n["n1"] * 1.0;
+            $b1 = $n["n2"] * 1.0;
+            $c1 = $n["n3"] * 0.51 + $n["n4"] * 1.05 + $n["n5"] * 1.53;
+            $c2 = $n["n6"] * 0.34 + $n["n7"] * 0.34 + $n["n8"] * 0.68 + $n["n9"] * 0.34 + $n["n`10`"] * 0.68 + $n["n11"] * 1.01 + $n["n12"] * 1.36 + $n["n13"] * 1.36;
+            $c3 = $n["n14"] * 4.60 + $n["n15"] * 3.07 + $n["n16"] * 1.53;
+            $c4 = $n["n17"] * 0.74 + $n["n18"] * 0.99 + $n["n19"] * 0.50 + $n["n20"] * 0.50 + $n["n21"] * 0.99 + $n["n22"] * 0.25 + $n["n23"] * 0.50 + $n["n24"] * 0.81 + $n["n25"] * 0.81 + $n["n26"] * 0.41 + $n["n27"] * 0.81 + $n["n28"] * 0.81 + $n["n29"] * 0.81 + $n["n30"] * 2.23 + $n["n31"] * 1.12;
+            $c5 = $n["n32"] * 0.77 + $n["n33"] * 0.77 + $n["n34"] * 0.38 + $n["n35"] * 0.38 + $n["n36"] * 0.77 + $n["n37"] * 3.07;
+            $c6 = $n["n38"] * 2.51 + $n["n39"] * 0.84 + $n["n40"] * 1.67 + $n["n41"] * 1.12 + $n["n42"] * 0.56 + $n["n43"] * 2.51 + $n["n44"] * 1.67 + $n["n45"] * 1.67 + $n["n46"] * 2.51 + $n["n47"] * 3.35;
+            $c7 = $n["n48"] * 1.53 + $n["n49"] * 3.07;
+            $c8 = $n["n50"] * 0.51 + $n["n51"] * 1.02;
+            $c9 = $n["n52"] * 1.92 + $n["n53"] * 1.92 + $n["n54"] * 2.88 + $n["n55"] * 0.96 + $n["n56"] * 1.92 + $n["n57"] * 1.92 + $n["n58"] * 1.92 + $n["n59"] * 2.88 + $n["n60"] * 2.88 + $n["n61"] * 1.92 + $n["n62"] * 1.92 + $n["n63"] * 3.83 + $n["n64"] * 2.88 + $n["n65"] * 0.96;
+            $d1 = $n["n66"] * 1.50 + $n["n67"] * 2.00 + $n["n68"] * 1.50 + $n["n69"] * 1.00;
+
+            $NA = $a1 + $b1 + $c1 + $c2 + $c3 + $c4 + $c5 + $c6 + $c7 + $c8 + $c9 + $d1;
+
+            return view('wakil.perolehan-nilai', [
+                "d" => penilaian::find($id),
+                "NA" => $NA
+            ]);
+        } else {
+            return redirect()->intended('/home');
+        }
+    }
+
     public function download($id)
     {
         $data = auth()->user()->type;
@@ -81,6 +113,18 @@ class WakilProdiController extends Controller
 
             $path = public_path('storage/' . $lokasi['lokasi']);
             return response()->download($path, $lokasi['nama_asli_file']);
+        } else {
+            return redirect()->intended('/home');
+        }
+    }
+
+    public function downloadDKPS()
+    {
+        $data = auth()->user()->type;
+        if ($data == "Wakil Prodi") {
+
+            $path = public_path('storage/file/Sheet Pengusul APS 4_0 20200131.xlsx');
+            return response()->download($path, 'Sheet Pengusul APS 4_0 20200131.xlsx');
         } else {
             return redirect()->intended('/home');
         }
@@ -238,8 +282,9 @@ class WakilProdiController extends Controller
     }
     public function uploadDEDSave(Request $request, $id)
     {
+        // dd($request);
         $data = $request->validate([
-            'file_ded' => 'required|mimetypes:application/pdf',
+            'file_ded' => 'required|mimes:pdf,doc,docx,html',
         ]);
 
 
@@ -289,6 +334,7 @@ class WakilProdiController extends Controller
             'uploadType' => 'media'
         ));
         $url = $result->id;
+
 
 
         filePengajuan::create([

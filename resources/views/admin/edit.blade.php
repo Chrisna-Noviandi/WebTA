@@ -59,6 +59,44 @@
     </div>
 </form>
 
+<form action="/usermanagement/resetpassword" method="post">
+  @csrf
+
+
+
+  <div class="mb-3 mt-3">
+    <label for="exampleInputEmail1" class="form-label">Password</label>
+    <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" id="exampleInputEmail1" aria-describedby="emailHelp">
+    @error("password")
+      <div class="invalid-feedback">
+          {{ $message }}
+      </div>
+    @enderror
+  
+  </div>
+  
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Password confirmation</label>
+    <input type="password" name="password_confirmation" class="form-control @error('password_confirmation') is-invalid @enderror" id="exampleInputPassword1">
+    @error("password_confirmation")
+      <div class="invalid-feedback">
+         {{ $message }}
+      </div>
+    @enderror
+ 
+  </div>
+ 
+  <div class="mb-3">
+    <input type="hidden" name="id" class="form-control" id="exampleInputPassword3" value="{{ $user["id"] }}">
+  </div>
+ 
+
+  <div class="col-12 text-center mt-4">
+      <button type="submit" class="btn btn-outline-dark">Reset Password</button>
+  </div>
+</form>
+
+
 <a href="/usermanagement">
     <div class="col-12 mt-2">
       <button type="submit" class="btn btn-outline-dark">Back to User Management</button>

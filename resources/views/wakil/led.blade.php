@@ -11,9 +11,7 @@
   <li class="nav-item">
     <a class="nav-link" href="/pengajuan"><i class="bi bi-people"></i>Daftar Pengajuan</a>
   </li>
-  <li class="nav-item">
-    <a class="nav-link active " href="/laporan-evaluasi-diri"><i class="bi bi-people"></i>LED</a>
-  </li>
+
 @endsection
 
 @section('content')

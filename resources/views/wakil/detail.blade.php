@@ -12,9 +12,6 @@
   <li class="nav-item">
     <a class="nav-link active" href="/pengajuan"><i class="bi bi-people"></i> Daftar Pegajuan</a>
   </li>
-  <li class="nav-item">
-    <a class="nav-link " href="/laporan-evaluasi-diri"><i class="bi bi-people"></i>LED</a>
-  </li>
 @endsection
 
 @section('content')
@@ -100,13 +97,16 @@
     </div>
 </center>
 <center>
-  <div class="row text-center mt-5 mb-4">
-    <div class="col-md-6" style="text-align: right">
-    <a href="/laporan-evaluasi-diri/download/{{ $pengajuan['id'] }}"><button type="button" class="btn btn-outline-dark col-6">Download Laporan Evaluasi Diri</button></a>
+  <div class="row text-center mt-5 mb-12">
+    <div class="col-md-4" >
+    <a href="/laporan-evaluasi-diri/download/{{ $pengajuan['id'] }}"><button type="button" class="btn btn-outline-dark col-6">Download DED / LED</button></a>
     </div>
-    <div class="col-md-6" style="text-align: left">
+    <div class="col-md-4">
     <a href="/laporan-evaluasi-diri/{{ $pengajuan['id'] }}"><button type="button" class="btn btn-outline-dark col-6">Isi Laporan Evaluasi Diri</button></a>
     </div> 
+    <div class="col-md-4">
+      <a href="/download/dkps"><button type="button" class="btn btn-outline-dark col-6">Download File DKPS</button></a>
+    </div>
   </div>
 </center>
 
@@ -116,6 +116,7 @@
       <div class="card">
         <div class="card-body">
           <h5 class="card-title text-center">DED</h5>
+          
           @if (count($file_ded) == 0)
             <center><p class="card-text mt-3" style="color:red;">File DED Kosong</p></center>
           @else
@@ -129,6 +130,7 @@
           @endif
           <center class="mt-3">
             @if ($pengajuan['status'] == 'belum' || $pengajuan['status'] == 'tolak')
+              <center><p style="color:red; font-size: 10pt;">Format file yang didukung .pdf, .doc, .docx dan batas file yang bisa di upload 1 DED  </p></center>
               <a href="/pengajuan/detail/upload-ded/{{ $pengajuan['id'] }}"><button type="button" class="btn btn-outline-dark">UPLOAD</button></a>
             @endif
           </center>
@@ -149,6 +151,7 @@
           @endif 
           <center class="mt-3">
             @if ($pengajuan['status'] == 'belum' || $pengajuan['status'] == 'tolak')
+              <center><p style="color:red; font-size: 10pt;">Format file yang didukung .xlsx, .xls dan dan batas file yang bisa di upload 1 File DKPS </p></center>
               <a href="/authgdrive/{{ $pengajuan['id'] }}"><button type="button" class="btn btn-outline-dark">UPLOAD</button></a>
             @endif
           </center>  
@@ -173,6 +176,7 @@
             @endif    
             <center class="mt-3">
               @if ($pengajuan['status'] == 'belum' || $pengajuan['status'] == 'tolak')
+                <center><p style="color:red; font-size: 10pt;">Format file yang didukung .xlsx, .xls, .doc, .docx, .png, .jpg dan dan batas file yang bisa di lebih dari 1 serta file yang wajib yaitu: izin pendirian ps, surat pengantar dari pimpinan, dan surat pernyataan </p></center>
                 <a href="/pengajuan/detail/upload-lampiran/{{ $pengajuan['id'] }}"><button type="button" class="btn btn-outline-dark">UPLOAD</button></a>
               @endif
             </center>

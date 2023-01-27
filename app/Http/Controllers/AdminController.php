@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\pengajuan;
 use App\Models\filePengajuan;
 use App\Models\penilaian;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -63,6 +64,29 @@ class AdminController extends Controller
         }
 
         $validatedata = $request->validate($rule);
+
+        User::where('id', $user['id'])
+            ->update($validatedata);
+
+        return redirect('/usermanagement')->with('success', 'User Has Been Update !!!');
+    }
+
+    public function resetPassword(Request $request)
+    {
+
+        $user = User::find($request->id);
+
+
+
+        $rule = [
+            'password' => 'min:6|required_with:password_confirmation|same:password_confirmation',
+            'password_confirmation' => 'min:6',
+        ];
+
+
+        $validatedata = $request->validate($rule);
+        $validatedata['password'] = Hash::make($validatedata['password']);
+        unset($validatedata['password_confirmation']);
 
         User::where('id', $user['id'])
             ->update($validatedata);

@@ -99,7 +99,6 @@
           </li>
           @endforeach
         </ul>
-      @endif
     </div>
   </div>
 </div>
@@ -110,8 +109,7 @@
       <h5 class="card-title text-center">DKPS</h5>
         @foreach ($file_dkps as $file)
           <p class="card-text mt-2"><a href="download/{{ $file['id'] }}">{{ $file['nama_asli_file'] }}</a></p>
-        @endforeach    
-      @endif 
+        @endforeach  
     </div>
   </div>
 </div>
@@ -126,8 +124,7 @@
                   <p class="card-text mt-2"><a href="download/{{ $file['id'] }}">{{ $file['nama_asli_file'] }}</a></p>
                 </li>
             @endforeach  
-          </ul>
-        @endif    
+          </ul>  
         </div>
     </div>
 </div>
